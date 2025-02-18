@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.DataAccessLayer.Repositories
 {
+    //Design Pattern
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
         private readonly BookStoreContext _context;
@@ -19,20 +20,20 @@ namespace BookStore.DataAccessLayer.Repositories
 
         public void Add(T entity)
         {
-            _context.Set<T>().Add(entity);
+            _context.Set<T>().Add(entity);  
             _context.SaveChanges();
         }
 
-        public void Delete(T entity)
+        public void Delete(int id)
         {
-            var value = _context.Set<T>().Find(entity);
+           var value = _context.Set<T>().Find(id);
             _context.Set<T>().Remove(value);
-            _context.SaveChanges();
+            _context.SaveChanges(); 
         }
 
         public List<T> GetAll()
         {
-            return _context.Set<T>().ToList();  
+            return _context.Set<T>().ToList();
         }
 
         public T GetById(int id)
@@ -42,7 +43,7 @@ namespace BookStore.DataAccessLayer.Repositories
 
         public void Update(T entity)
         {
-            _context.Set<T>().Update(entity);
+           _context.Set<T>().Update(entity);
             _context.SaveChanges();
         }
     }

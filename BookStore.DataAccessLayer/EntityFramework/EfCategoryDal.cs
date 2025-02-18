@@ -14,6 +14,7 @@ namespace BookStore.DataAccessLayer.EntityFramework
     {
         public EfCategoryDal(BookStoreContext context) : base(context)
         {
+            
         }
     }
 }
