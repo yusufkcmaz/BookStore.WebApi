@@ -9,6 +9,8 @@ namespace BookStore.DataAccessLayer.Abstract
 {
     public interface ICategoryDal:IGenericDal<Category>
     {
+        // Kategoriye özel metod-en son eklenen kategorileri
+        //List<Category> GetLatestCategories(int count);
 
     }
 }

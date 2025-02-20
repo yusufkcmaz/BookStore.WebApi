@@ -38,7 +38,8 @@ namespace BookStore.BusinessLayer.Concrete
         {
            return _productDal.GetById( id);
         }
-
+        
+        //İnterface Metod
         public int TGetProductCount()
         {
            return _productDal.GetProductCount();

@@ -14,5 +14,8 @@ namespace BookStore.DataAccessLayer.Abstract
         void Update(T entity);
         List<T> GetAll();
         T GetById(int id);
+        //
+        //List<T> GetByPage(int pageNumber, int pageSize);
+
     }
 }

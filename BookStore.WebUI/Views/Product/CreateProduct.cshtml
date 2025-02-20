@@ -1,0 +1,32 @@
+﻿@model BookStore.WebUI.Dtos.ProductsDtos.CreateProductDto
+@{
+    Layout = null;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+<form method="post">
+    <div class="container">
+
+        <br />
+        <label>Ürün adı</label>
+        <input type="text" asp-for="ProductName" class="form-control" />
+        <br />
+
+        <br />
+        <label>Ürün Fiyatı</label>
+        <input type="text" asp-for="ProductPrice" class="form-control" />
+        <br />
+
+        <br />
+        <label>Ürün stok</label>
+        <input type="text" asp-for="ProductStock" class="form-control" />
+        <br />
+
+
+        <button class="btn btn-primary">EKLE</button>
+
+
+    </div>
+</form>
+
