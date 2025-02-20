@@ -63,7 +63,7 @@ namespace BookStore.WebUI.Controllers
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            await client.DeleteAsync("https://localhost:7293/api/Categories" + id);
+            await client.DeleteAsync("https://localhost:7293/api/Categories?id=" + id);
             return RedirectToAction("CategoryList");
 
         }
