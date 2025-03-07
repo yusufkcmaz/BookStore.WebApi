@@ -47,10 +47,12 @@ namespace BookStore.WebApi.Controllers
         }
 
         [HttpGet("GetProduct")]
+
         public IActionResult GetProduct(int id)
         {
             return Ok(_productService.TGetById(id));
         }
+
         [HttpGet("ProductCount")]
         public IActionResult ProductCount()
         {

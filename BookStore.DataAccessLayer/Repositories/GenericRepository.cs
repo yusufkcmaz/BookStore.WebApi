@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace BookStore.DataAccessLayer.Repositories
 {
-    //Design Pattern
+    //Design Pattern : Generic Repository Pattern
+    //Generic Repository Pattern kullanır.
+
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
         private readonly BookStoreContext _context;
@@ -46,5 +48,7 @@ namespace BookStore.DataAccessLayer.Repositories
            _context.Set<T>().Update(entity);
             _context.SaveChanges();
         }
+
+        //Buraya da tanımlanabilir metod refaktör
     }
 }

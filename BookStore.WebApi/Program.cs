@@ -7,8 +7,9 @@ using BookStore.DataAccessLayer.EntityFramework;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+//Baðýmlýlýklarý yönetmek 
 builder.Services.AddDbContext<BookStoreContext>();
+
 builder.Services.AddScoped<ICategoryDal , EfCategoryDal>();
 builder.Services.AddScoped<ICategoryService , CategoryManager>();
 

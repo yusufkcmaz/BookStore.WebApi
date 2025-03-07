@@ -2,6 +2,8 @@
 using BookStore.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using static System.Net.WebRequestMethods;
 
 namespace BookStore.WebApi.Controllers
 {
@@ -10,20 +12,23 @@ namespace BookStore.WebApi.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
-
+       // controller iş mantığı ilgilenir, yani ICategoryService kullanılır.
         public CategoriesController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }
 
-        [HttpGet]   
+        [HttpGet]
+        //  API endpoint olarak çalışır
 
         public IActionResult CategoryList()
         {
             var value = _categoryService.TGetAll();
-            return Ok(value);
+            return Ok(value); //--> HTTP 200 OK döner
         }
-        [HttpPost] 
+
+        [HttpPost]
+        //kategori verisini alır.JSON formatında gelir.
         public IActionResult CreateCategory(Category category)
         {
             _categoryService.TAdd(category);
@@ -44,4 +49,5 @@ namespace BookStore.WebApi.Controllers
             return Ok("Güncelleme işlemi başarılı");
         }
     }
+
 }

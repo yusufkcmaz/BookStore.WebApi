@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace BookStore.DataAccessLayer.Abstract
 {
+    //Generic Repository Pattern.
+    //Ortak bir veri erişim katmanı.
     public interface IGenericDal<T> where T : class
     {
         void Add(T entity); 

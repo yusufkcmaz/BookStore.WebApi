@@ -10,6 +10,7 @@ namespace BookStore.DataAccessLayer.Abstract
 
     public interface IProductDal : IGenericDal<Product>
     {
+        //1-Toplam kitap sayısı.
         int GetProductCount();
 
     }
