@@ -67,12 +67,11 @@ namespace BookStore.WebUI.Controllers
             //API, gelen JSON'u işleyip veritabanına kaydeder.
             var jsonData = JsonConvert.SerializeObject(createCategoryDto);
 
-
-
             //API'ye JSON formatında veri göndereceğimiz için, JSON verimizi StringContent nesnesine dönüştürüyoruz.
             StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-
+            //Kategori verisini API'ye göndermek için POST isteği yapar
+            //Verinin JSON formatında dönüştürülmesi
             var responseMessage = await client.PostAsync("https://localhost:7293/api/Categories", content);
 
             if (responseMessage.IsSuccessStatusCode)
