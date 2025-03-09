@@ -12,9 +12,11 @@ namespace BookStore.EntityLayer.Concrete
         public string  ProductName { get; set; }
         public int ProductStock { get; set; }
         public decimal ProductPrice { get; set; }
-        public string ImamgeUrl { get; set; }
-        public string Writer  { get; set; }
-        public int CategoryId { get; set; }
+        public string ImageUrl { get; set; }
+        public int WriterId { get; set; }
+        public Writer? Writer { get; set; } //--> Ürün ile yazar arasında ilişki
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
 
 
     }

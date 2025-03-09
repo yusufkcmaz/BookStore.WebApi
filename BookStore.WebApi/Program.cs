@@ -16,6 +16,15 @@ builder.Services.AddScoped<ICategoryService , CategoryManager>();
 builder.Services.AddScoped<IProductDal , EfProductDal>();
 builder.Services.AddScoped<IProductService , ProductManager>();
 
+builder.Services.AddScoped<IBillboardDal , EfBillboardDal>();
+builder.Services.AddScoped<IBillboardService , BillboardManager >();
+
+builder.Services.AddScoped<IFeatureDal , EfFeatureDal>();
+builder.Services.AddScoped<IFeatureService , FeatureManager>();
+
+builder.Services.AddScoped<IWriterDal , EfWriterDal>(); 
+builder.Services.AddScoped<IWriterService , WriterManager >();
+
 
 
 builder.Services.AddControllers();

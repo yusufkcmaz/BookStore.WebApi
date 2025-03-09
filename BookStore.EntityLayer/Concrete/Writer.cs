@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace BookStore.EntityLayer.Concrete
 {
-    public class Write
+    public class Writer
     {
-        public int WriteId { get; set; }
+        public int WriterId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string About { get; set; }
         public string ImageUrl { get; set; }
-        public List<Product> { get; set; }
+        //Bir yazarın birden fazla kitabı olabilir.
+        public List<Product>? Products { get; set; }
     }
 }
