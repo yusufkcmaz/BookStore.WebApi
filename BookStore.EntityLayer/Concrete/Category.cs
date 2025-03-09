@@ -13,7 +13,7 @@ namespace BookStore.EntityLayer.Concrete
         public string CategoryName { get; set; }
 
         //Bir kategorinin içinde birden fazla kitap olabilir
-        public List<Product> Books { get; set; }
+        public List<Product> Products { get; set; }
 
     }
 }

@@ -16,7 +16,7 @@ namespace BookStore.EntityLayer.Concrete
         public int WriterId { get; set; }
         public Writer? Writer { get; set; } //--> Ürün ile yazar arasında ilişki
         public int CategoryID { get; set; }
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
 
 
     }

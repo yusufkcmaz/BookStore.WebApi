@@ -9,5 +9,6 @@ namespace BookStore.DataAccessLayer.Abstract
 {
     public interface IFeatureDal :IGenericDal<Feature>
     {
+        int GetFeatureCount();
     }
 }

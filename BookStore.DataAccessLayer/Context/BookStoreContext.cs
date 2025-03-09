@@ -12,12 +12,15 @@ namespace BookStore.DataAccessLayer.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=IŞ\\SQLEXPRESS;initial catalog=ApiBookDb;integrated security=true;");
+            optionsBuilder.UseSqlServer("Server=IŞ\\SQLEXPRESS;initial catalog=APIBookDb;integrated security=true;");
 
         }
 
         public DbSet<Category> Categories { get; set; }  
         public DbSet<Product> Products { get; set; }  
+        public DbSet<Feature> Features { get; set; }    
+        public DbSet<Writer> Writers { get; set; }
+        public DbSet<Billboard> Billboards { get; set; }
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BookStore.BusinessLayer.Abstract;
+using BookStore.DataAccessLayer.Abstract;
 using BookStore.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,36 +11,41 @@ namespace BookStore.BusinessLayer.Concrete
 {
     public class FeatureManager : IFeatureService
     {
-        private readonly IFeatureService _featureService;
+        private readonly IFeatureDal _featureDal;
 
-        public FeatureManager(IFeatureService featureService)
+        public FeatureManager(IFeatureDal featureDal)
         {
-            _featureService = featureService;
+            _featureDal = featureDal;
         }
 
         public void TAdd(Feature entity)
         {
-            _featureService.TAdd(entity);
+        _featureDal.Add(entity);
         }
 
         public void TDelete(int id)
         {
-            _featureService.TDelete(id);
+           _featureDal.Delete(id);
         }
 
         public List<Feature> TGetAll()
         {
-            return _featureService.TGetAll();
+            return _featureDal.GetAll();
         }
 
         public Feature TGetById(int id)
         {
-            return _featureService.TGetById(id);
+            return _featureDal.GetById(id);
+        }
+
+        public int TGetFeatureCount()
+        {
+            return _featureDal.GetFeatureCount();
         }
 
         public void TUpdate(Feature entity)
         {
-            _featureService.TUpdate(entity);
+            _featureDal.Update(entity);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BookStore.BusinessLayer.Abstract;
+using BookStore.DataAccessLayer.Abstract;
 using BookStore.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,36 +11,36 @@ namespace BookStore.BusinessLayer.Concrete
 {
     public class WriterManager : IWriterService
     {
-        private readonly IWriterService _writerService;
+        private readonly IWriterDal _writerDal;
 
-        public WriterManager(IWriterService writerService)
+        public WriterManager(IWriterDal writerDal)
         {
-            _writerService = writerService;
+            _writerDal = writerDal;
         }
 
         public void TAdd(Writer entity)
         {
-            _writerService.TAdd(entity);
+            _writerDal.Add(entity);
         }
 
         public void TDelete(int id)
         {
-            _writerService.TDelete(id);
+            _writerDal.Delete(id);  
         }
 
         public List<Writer> TGetAll()
         {
-            return _writerService.TGetAll();    
+            return _writerDal.GetAll(); 
         }
 
         public Writer TGetById(int id)
         {
-            return _writerService.TGetById(id);
+            return _writerDal.GetById(id);
         }
 
         public void TUpdate(Writer entity)
         {
-            return _writerService.TUpdate(entity);
+           _writerDal.Update(entity);
         }
     }
 }

@@ -11,9 +11,17 @@ using System.Threading.Tasks;
 namespace BookStore.DataAccessLayer.EntityFramework
 {
     public class EfFeatureDal : GenericRepository<Feature>, IFeatureDal
-    {
-        public EfFeatureDal(BookStoreContext context) : base(context)
+    { 
+        private readonly BookStoreContext _context;
+
+        public EfFeatureDal(BookStoreContext context) :base(context) 
         {
+            _context = context;
+        }
+
+        public int GetFeatureCount()
+        {
+            return _context.Features.Count();
         }
     }
 }

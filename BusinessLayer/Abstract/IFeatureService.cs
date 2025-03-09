@@ -9,5 +9,6 @@ namespace BookStore.BusinessLayer.Abstract
 {
     public interface IFeatureService :IGenericService<Feature>
     {
+        public int TGetFeatureCount();
     }
 }
