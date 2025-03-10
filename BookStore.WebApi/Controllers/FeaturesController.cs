@@ -58,6 +58,12 @@ namespace BookStore.WebApi.Controllers
 
         public IActionResult Delete(int id)
         {
+            var values = _featureService.TGetById(id);
+            if (values == null)
+            {
+                return NotFound("Silmek istediğiniz özellik bulunamadı.");
+            }
+
             _featureService.TDelete(id);
             return Ok("Başarılı"); 
         }
@@ -68,6 +74,15 @@ namespace BookStore.WebApi.Controllers
             return Ok(_featureService.TGetFeatureCount());
         }
 
+        [HttpGet("GetLastFourFeature")]
+        public IActionResult GetlastFourFeatures()
+        {
+            var result = _featureService.TGetAll()
+                .OrderByDescending(x => x.FeatureId)
+                .Take(4)
+                .ToList();
+            return Ok(result);
+        }
 
     }
 

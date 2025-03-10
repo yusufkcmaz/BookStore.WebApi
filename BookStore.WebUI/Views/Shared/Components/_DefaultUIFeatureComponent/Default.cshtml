@@ -1,4 +1,5 @@
-﻿
+﻿@using BookStore.WebUI.Dtos.FeatureDtos
+@model List<ResultFeatureDto>
 @*
     _DefaultUIFeatureComponen
 *@
@@ -11,29 +12,32 @@
 					<div class="title">
 						<span>Some quality items</span>
 					</div>
-					<h2 class="section-title">Featured Books</h2>
+					<h2 class="section-title">Öne çıkan kitapalr</h2>
 				</div>
 
 				<div class="product-list" data-aos="fade-up">
 					<div class="row">
-
-						<div class="col-md-3">
-							<div class="product-item">
-								<figure class="product-style">
-									<img src="~/booksaw/images/product-item1.jpg" alt="Books" class="product-item">
-									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-										Add to
-										Cart
-									</button>
-								</figure>
-								<figcaption>
-									<h3>Simple way of piece life</h3>
-									<span>Armor Ramsey</span>
-									<div class="item-price">$ 40.00</div>
-								</figcaption>
+						@foreach (var front in Model)
+						{
+							<div class="col-md-3">
+								<div class="product-item">
+									<figure class="product-style">
+										<img src="@front.ImageUrl" alt="Kitap" class="product-item">
+										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+											Add to
+											Cart
+										</button>
+									</figure>
+									<figcaption>
+										<h3>@front.BookName</h3>
+										<span>@front.WriterName</span>
+										@* <div class="item-price">$ 40.00</div> *@
+									</figcaption>
+								</div>
 							</div>
-						</div>
 
+						}
+				@* 
 						<div class="col-md-3">
 							<div class="product-item">
 								<figure class="product-style">
@@ -83,7 +87,7 @@
 									<div class="item-price">$ 35.00</div>
 								</figcaption>
 							</div>
-						</div>
+						</div> *@
 
 					</div><!--ft-books-slider-->
 				</div><!--grid-->
@@ -92,16 +96,6 @@
 			</div><!--inner-content-->
 		</div>
 
-		<div class="row">
-			<div class="col-md-12">
-
-				<div class="btn-wrap align-right">
-					<a href="#" class="btn-accent-arrow">
-						View all products <i class="icon icon-ns-arrow-right"></i>
-					</a>
-				</div>
-
-			</div>
-		</div>
+	
 	</div>
 </section>
