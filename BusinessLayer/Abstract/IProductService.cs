@@ -12,7 +12,7 @@ namespace BookStore.BusinessLayer.Abstract
          public int TGetProductCount();
         Product TGetRandomProduct();
         List<Product> GetAllProductsWithDetails();
-
+        public List<Product> TGetProductsWithCategories();
 
 
     }

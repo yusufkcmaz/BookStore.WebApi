@@ -14,6 +14,7 @@ namespace BookStore.DataAccessLayer.Abstract
         int GetProductCount();
         Product GetRandomProduct();
         List<Product> GetAllProductsWithDetails();
+        List<Product> GetProductsWithCategories();
     }
 
 

@@ -64,5 +64,10 @@ namespace BookStore.BusinessLayer.Concrete
 
             return _productDal.GetAllProductsWithDetails();
         }
+
+        public List<Product> TGetProductsWithCategories()
+        {
+          return _productDal.GetProductsWithCategories();
+        }
     }
 }

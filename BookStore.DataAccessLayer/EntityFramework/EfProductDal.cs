@@ -48,6 +48,14 @@ namespace BookStore.DataAccessLayer.EntityFramework
                 .Include(p => p.Category) // Kategori tablosu ile ilişkilendirme
                 .ToList();
         }
+
+        public List<Product> GetProductsWithCategories()
+        {
+            return _context.Products
+                .Include(p => p.Category)
+                .Include(p => p.Writer)
+                .ToList();
+        }
     }
 
 

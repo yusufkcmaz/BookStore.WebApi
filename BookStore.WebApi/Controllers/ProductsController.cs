@@ -5,6 +5,7 @@ using BookStore.WebApi.Dtos.ApiProductDto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Query;
+using System.Runtime.CompilerServices;
 
 namespace BookStore.WebApi.Controllers
 {
@@ -14,37 +15,59 @@ namespace BookStore.WebApi.Controllers
     {
         private readonly IProductService _productService;
         private readonly IMapper _mapper;
+        private readonly ICategoryService _categoryService;
+        private readonly IWriterService _writerService;
 
-        public ProductsController(IProductService productService , IMapper mapper)
+        public ProductsController(IProductService productService, IMapper mapper, ICategoryService categoryService, IWriterService writerService)
         {
             _productService = productService;
             _mapper = mapper;
-
+            _categoryService = categoryService;
+            _writerService = writerService;
         }
 
-        [HttpGet]   
+
+        [HttpGet]
 
         public IActionResult ProductList()
         {
 
             var product = _productService.GetAllProductsWithDetails();
-              
+
             var dto = _mapper.Map<List<ResultProductDetailDto>>(product);
             return Ok(dto);
             //return Ok(_productService.TGetAll());
-        
+
         }
+
+
+
+        [HttpGet("GetCategoryAndWriter")]
+        public IActionResult GetProductsWithCategories()
+        {
+
+            var categories = _categoryService.TGetAll();  // Kategorileri al
+            var writers = _writerService.TGetAll();
+            var result = new
+            {
+                Categories = categories,
+                Writers = writers
+            };
+            return Ok(result);
+        }
+
 
         [HttpPost]
 
         public IActionResult CreateProduct(CreateProductDto productDto)
         {
-            var product =_mapper.Map<Product>(productDto);
+            var product = _mapper.Map<Product>(productDto);
             _productService.TAdd(product);
             return Ok("Ürün Ekleme Başarılı");
             //_productService.TAdd(_product);
             //return Ok("Ekleme işlemi başarılı ");
         }
+
 
         [HttpPut]
         public IActionResult UpdateProduct(Product _product)
@@ -53,7 +76,7 @@ namespace BookStore.WebApi.Controllers
             return Ok("Güncelleme işlemi başarıyla tamamlandı");
         }
 
-        [HttpDelete ]
+        [HttpDelete]
 
         public IActionResult DeleteProduct(int id)
         {
@@ -65,9 +88,9 @@ namespace BookStore.WebApi.Controllers
 
         public IActionResult GetProduct(int id)
         {
-           var valuw = _productService.TGetById(id);
+            var valuw = _productService.TGetById(id);
             return Ok(valuw);
-            
+
             //return Ok (_productService.TGetById(id));
         }
 
@@ -85,7 +108,7 @@ namespace BookStore.WebApi.Controllers
             {
                 return NotFound("Ürün mürün yok rastgele ");
             }
-          
+
             return Ok(product);
 
         }
