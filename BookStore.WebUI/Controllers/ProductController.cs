@@ -1,4 +1,5 @@
-﻿using BookStore.WebUI.Dtos.ProductsDtos;
+﻿using BookStore.BusinessLayer.Abstract;
+using BookStore.WebUI.Dtos.ProductsDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -14,6 +15,7 @@ namespace BookStore.WebUI.Controllers
         public ProductController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
+            
         }
 
         public async Task<IActionResult> ProductList()
@@ -97,6 +99,7 @@ namespace BookStore.WebUI.Controllers
 
         }
 
+      
 
 
     }

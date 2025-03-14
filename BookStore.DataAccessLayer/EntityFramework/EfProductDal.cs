@@ -2,6 +2,7 @@
 using BookStore.DataAccessLayer.Context;
 using BookStore.DataAccessLayer.Repositories;
 using BookStore.EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,17 +13,44 @@ namespace BookStore.DataAccessLayer.EntityFramework
 {
     public class EfProductDal : GenericRepository<Product>, IProductDal
     {
+        private readonly BookStoreContext _context;
         public EfProductDal(BookStoreContext context) : base(context)
         {
-
+            _context = context;
         }
 
         public int GetProductCount()
         {
             //->2
-            var context=new BookStoreContext();
-            int value =context.Products.Count();
+            var context = new BookStoreContext();
+            int value = context.Products.Count();
             return value;
         }
+        public Product GetRandomProduct()
+        {
+            int count = _context.Set<Product>().Count();
+            Random random = new Random();
+            int randomIndex = new Random().Next(1, count);
+            var values = _context.Set<Product>()
+                .Skip(randomIndex)
+                .Take(1)
+                .FirstOrDefault();
+            return values;
+        }
+
+
+
+        public List<Product> GetAllProductsWithDetails()
+        {
+            //using var context = new BookStoreContext();
+            return _context.Products
+                .Include(p => p.Writer)  // Yazar tablosu ile ilişkilendirme
+                .Include(p => p.Category) // Kategori tablosu ile ilişkilendirme
+                .ToList();
+        }
     }
+
+
+
+
 }

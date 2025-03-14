@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace BookStore.BusinessLayer.Abstract
 {
-    public interface IProductService :IGenericService<Product>
+    public interface IProductService : IGenericService<Product>
     {
-        public int TGetProductCount();
+         public int TGetProductCount();
+        Product TGetRandomProduct();
+        List<Product> GetAllProductsWithDetails();
+
+
+
     }
+
+
 }

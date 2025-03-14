@@ -1,6 +1,8 @@
 ﻿using BookStore.BusinessLayer.Abstract;
 using BookStore.DataAccessLayer.Abstract;
+using BookStore.DataAccessLayer.Context;
 using BookStore.EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,11 @@ namespace BookStore.BusinessLayer.Concrete
             _productDal = productDal;
         }
 
+        public Product TGetRandomProduct()
+        {
+            return _productDal.GetRandomProduct();
+        }
+
         public void TAdd(Product entity)
         {
           
@@ -31,6 +38,7 @@ namespace BookStore.BusinessLayer.Concrete
 
         public List<Product> TGetAll()
         {
+            
             return _productDal.GetAll();
         }
 
@@ -38,16 +46,23 @@ namespace BookStore.BusinessLayer.Concrete
         {
            return _productDal.GetById( id);
         }
-        
-        //İnterface Metod
+
         public int TGetProductCount()
         {
-           return _productDal.GetProductCount();
+            return _productDal.GetProductCount();
         }
+
+        //İnterface Metod
 
         public void TUpdate(Product entity)
         {
             _productDal.Update(entity);
+        }
+
+        public List<Product> GetAllProductsWithDetails()
+        {
+
+            return _productDal.GetAllProductsWithDetails();
         }
     }
 }

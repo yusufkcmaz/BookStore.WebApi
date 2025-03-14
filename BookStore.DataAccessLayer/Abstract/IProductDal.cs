@@ -12,7 +12,12 @@ namespace BookStore.DataAccessLayer.Abstract
     {
         //1-Toplam kitap sayısı.
         int GetProductCount();
-
+        Product GetRandomProduct();
+        List<Product> GetAllProductsWithDetails();
     }
 
+
 }
+
+
+
