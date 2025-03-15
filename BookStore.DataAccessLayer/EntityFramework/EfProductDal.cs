@@ -28,15 +28,37 @@ namespace BookStore.DataAccessLayer.EntityFramework
         }
         public Product GetRandomProduct()
         {
+            //int count = _context.Set<Product>().Count();
+            //Random random = new Random();
+            //int randomIndex = new Random().Next(1, count);
+            //var values = _context.Set<Product>()
+            //    .Skip(randomIndex)
+            //    .Take(1)
+            //    .FirstOrDefault();
+
+            //return values;
+           
+        
+           
             int count = _context.Set<Product>().Count();
+
+           
+
             Random random = new Random();
-            int randomIndex = new Random().Next(1, count);
-            var values = _context.Set<Product>()
-                .Skip(randomIndex)
-                .Take(1)
-                .FirstOrDefault();
-            return values;
+            int randomIndex = random.Next(0, count);
+
+            // Rastgele ürünü al
+            var product = _context.Set<Product>()
+                                  .Skip(randomIndex)
+                                  .Take(1)
+                                  .Include(p => p.Writer)   // Writer ile ilişkiyi dahil et
+                                  .Include(p => p.Category)  // Category ile ilişkiyi dahil et
+                                  .FirstOrDefault(); // Sadece 1 ürün al
+
+            return product;
         }
+
+        
 
 
 

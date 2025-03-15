@@ -70,10 +70,13 @@ namespace BookStore.WebApi.Controllers
 
 
         [HttpPut]
-        public IActionResult UpdateProduct(Product _product)
+        public IActionResult UpdateProduct(UpdateProductDto update)
         {
-            _productService.TUpdate(_product);
-            return Ok("Güncelleme işlemi başarıyla tamamlandı");
+            var product = _mapper.Map<Product>(update);
+             _productService.TUpdate(product);
+            return Ok("Güncelleme başarılı kenks :");
+            //_productService.TUpdate(_product);
+            //return Ok("Güncelleme işlemi başarıyla tamamlandı");
         }
 
         [HttpDelete]

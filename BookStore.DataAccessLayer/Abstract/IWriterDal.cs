@@ -10,5 +10,6 @@ namespace BookStore.DataAccessLayer.Abstract
 {
     public interface IWriterDal : IGenericDal<Writer>
     {
+         List<Writer> GetAllWriter();
     }
 }

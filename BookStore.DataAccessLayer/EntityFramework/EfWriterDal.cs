@@ -12,8 +12,17 @@ namespace BookStore.DataAccessLayer.EntityFramework
 {
     public class EfWriterDal : GenericRepository<Writer>, IWriterDal
     {
+        private readonly BookStoreContext _context; 
         public EfWriterDal(BookStoreContext context) : base(context)
         {
+            _context = context; 
+        }
+
+        public List<Writer> GetAllWriter()
+        {
+            var values = new BookStoreContext();
+            var writer = values.Writers.ToList();
+            return writer;  
         }
     }
 }

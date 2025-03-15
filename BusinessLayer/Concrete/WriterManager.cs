@@ -18,6 +18,11 @@ namespace BookStore.BusinessLayer.Concrete
             _writerDal = writerDal;
         }
 
+        public List<Writer> GetAllWriter()
+        {
+            return _writerDal.GetAllWriter();   
+        }
+
         public void TAdd(Writer entity)
         {
             _writerDal.Add(entity);

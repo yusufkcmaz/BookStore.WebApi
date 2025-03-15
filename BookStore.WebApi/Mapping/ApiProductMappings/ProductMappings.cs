@@ -12,15 +12,18 @@ namespace BookStore.WebApi.Mapping.ApiProductMappings
             CreateMap<Product, CreateProductDto>()
                   .ForMember(dest => dest.ProductImageUrl, opt => opt.MapFrom(src => src.ImageUrl))
             .ReverseMap();
-                
-                
+
+                                
             CreateMap<Product, ResulProductDto>().ReverseMap();
+
+
             CreateMap<Product, ResultProductDetailDto>()
                   .ForMember(dest => dest.WriterName, opt => opt.MapFrom(src => src.Writer != null ? src.Writer.Name : "Unknown"))
             .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category != null ? src.Category.CategoryName : "No Category"))
             .ReverseMap();
 
-
+            CreateMap<Product , UpdateProductDto>()
+                .ReverseMap();
 
         }
 

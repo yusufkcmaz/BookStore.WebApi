@@ -9,9 +9,11 @@ namespace BookStore.WebUI.Dtos.ProductsDtos
         public int ProductStock { get; set; }
         public decimal ProductPrice { get; set; }
         public string ImageUrl { get; set; }
-        public int WriterId { get; set; }
-        public Writer? Writer { get; set; } //--> Ürün ile yazar arasında ilişki
-        public int CategoryID { get; set; }
-        public Category? Category { get; set; }
+
+
+        public int? WriterId { get; set; }
+        public Writer Writer { get; set; } 
+        public int? CategoryID { get; set; }
+        public Category Category { get; set; }
     }
 }

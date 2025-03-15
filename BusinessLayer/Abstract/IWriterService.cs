@@ -9,5 +9,6 @@ namespace BookStore.BusinessLayer.Abstract
 {
     public interface IWriterService :IGenericService<Writer>
     {
+        public List<Writer> GetAllWriter();
     }
 }
