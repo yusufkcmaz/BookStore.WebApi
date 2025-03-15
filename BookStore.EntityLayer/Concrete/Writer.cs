@@ -14,6 +14,6 @@ namespace BookStore.EntityLayer.Concrete
         public string About { get; set; }
         public string ImageUrl { get; set; }
         //Bir yazarın birden fazla kitabı olabilir.
-        public List<Product>? Products { get; set; }
+        public virtual List<Product>? Products { get; set; }
     }
 }
