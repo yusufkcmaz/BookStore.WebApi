@@ -1,4 +1,4 @@
-﻿
+﻿@model List<BookStore.WebUI.Dtos.BillboardDtos.ResultBillboardDto>
 @*
 _DefaultUIBillboardComponent
 *@
@@ -13,23 +13,27 @@ _DefaultUIBillboardComponent
 				</button>
 
 				<div class="main-slider pattern-overlay">
-					<div class="slider-item">
-						<div class="banner-content">
-							<h2 class="banner-title">Life of the Wild</h2>
-							<p>
-								hayko baba
+					@foreach (var item in Model)
+					{
 
-							</p>
-							<div class="btn-wrap">
-								<a href="#" class="btn btn-outline-accent btn-accent-arrow">
-									Read More<i class="icon icon-ns-arrow-right"></i>
-								</a>
-							</div>
-						</div><!--banner-content-->
-						<img src="~/booksaw/images/main-banner1.jpg" alt="banner" class="banner-image">
-					</div><!--slider-item-->
 
-					<div class="slider-item">
+						<div class="slider-item">
+							<div class="banner-content">
+								<h2 class="banner-title">@item.BookName</h2>
+								<p>
+
+									@item.Description
+								</p>
+								<div class="btn-wrap">
+									<a href="#" class="btn btn-outline-accent btn-accent-arrow">
+										Read More<i class="icon icon-ns-arrow-right"></i>
+									</a>
+								</div>
+							</div><!--banner-content-->
+							<img src="@item.ImageUrl" style="width:400px; height:600px;" alt="banner" class="banner-image">
+						</div><!--slider-item-->
+					}
+@* 					<div class="slider-item">
 						<div class="banner-content">
 							<h2 class="banner-title">Birds gonna be Happy</h2>
 							<p>
@@ -44,7 +48,7 @@ _DefaultUIBillboardComponent
 							</div>
 						</div><!--banner-content-->
 						<img src="images/main-banner2.jpg" alt="banner" class="banner-image">
-					</div><!--slider-item-->
+					</div><!--slider-item--> *@
 
 				</div><!--slider-->
 

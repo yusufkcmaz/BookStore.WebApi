@@ -37,28 +37,34 @@ namespace BookStore.DataAccessLayer.EntityFramework
             //    .FirstOrDefault();
 
             //return values;
-           
-        
-           
-            int count = _context.Set<Product>().Count();
-
-           
-
-            Random random = new Random();
-            int randomIndex = random.Next(0, count);
-
-            // Rastgele ürünü al
             var product = _context.Set<Product>()
-                                  .Skip(randomIndex)
-                                  .Take(1)
-                                  .Include(p => p.Writer)   // Writer ile ilişkiyi dahil et
-                                  .Include(p => p.Category)  // Category ile ilişkiyi dahil et
-                                  .FirstOrDefault(); // Sadece 1 ürün al
-
+    .OrderBy(x => Guid.NewGuid())  // Rastgele sıralama
+    .Take(1)
+    .FirstOrDefault();
             return product;
+
+
+
+
+            //int count = _context.Set<Product>().Count();
+
+
+
+            //Random random = new Random();
+            //int randomIndex = random.Next(0, count);
+
+            //// Rastgele ürünü al
+            //var product = _context.Set<Product>()
+            //                      .Skip(randomIndex)
+            //                      .Take(1)
+            //                      .Include(p => p.Writer)   // Writer ile ilişkiyi dahil et
+            //                      .Include(p => p.Category)  // Category ile ilişkiyi dahil et
+            //                      .FirstOrDefault(); // Sadece 1 ürün al
+
+            //return product;
         }
 
-        
+
 
 
 

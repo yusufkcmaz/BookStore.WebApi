@@ -107,12 +107,8 @@ namespace BookStore.WebApi.Controllers
         public IActionResult GetRandomProduct()
         {
             var product = _productService.TGetRandomProduct();
-            if (product == null)
-            {
-                return NotFound("Ürün mürün yok rastgele ");
-            }
-
-            return Ok(product);
+            var dto = _mapper.Map<RandomProductDto>(product);
+            return Ok(dto);
 
         }
 

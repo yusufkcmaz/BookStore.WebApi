@@ -25,6 +25,8 @@ namespace BookStore.WebApi.Mapping.ApiProductMappings
             CreateMap<Product , UpdateProductDto>()
                 .ReverseMap();
 
+            CreateMap<Product, RandomProductDto>().ReverseMap();
+
         }
 
     }
