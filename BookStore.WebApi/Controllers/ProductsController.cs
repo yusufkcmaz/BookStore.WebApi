@@ -16,14 +16,14 @@ namespace BookStore.WebApi.Controllers
         private readonly IProductService _productService;
         private readonly IMapper _mapper;
         private readonly ICategoryService _categoryService;
-        private readonly IWriterService _writerService;
+       
 
-        public ProductsController(IProductService productService, IMapper mapper, ICategoryService categoryService, IWriterService writerService)
+        public ProductsController(IProductService productService, IMapper mapper, ICategoryService categoryService)
         {
             _productService = productService;
             _mapper = mapper;
             _categoryService = categoryService;
-            _writerService = writerService;
+           
         }
 
 
@@ -32,12 +32,16 @@ namespace BookStore.WebApi.Controllers
         public IActionResult ProductList()
         {
 
-            var product = _productService.GetAllProductsWithDetails();
+            var product = _productService.TGetAll();
 
             var dto = _mapper.Map<List<ResultProductDetailDto>>(product);
             return Ok(dto);
-            //return Ok(_productService.TGetAll());
 
+            ////return Ok(_productService.TGetAll());
+            ///
+            //var product = _productService.TGetAll();
+            //var productdto = _mapper.Map<List<ResultProductDetailDto>>(product);
+            //return Ok(productdto);
         }
 
 
@@ -47,11 +51,11 @@ namespace BookStore.WebApi.Controllers
         {
 
             var categories = _categoryService.TGetAll();  // Kategorileri al
-            var writers = _writerService.TGetAll();
+            //var writers = _writerService.TGetAll();
             var result = new
             {
                 Categories = categories,
-                Writers = writers
+                //Writers = writers
             };
             return Ok(result);
         }

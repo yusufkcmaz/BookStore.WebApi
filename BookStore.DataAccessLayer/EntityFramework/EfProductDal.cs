@@ -72,7 +72,7 @@ namespace BookStore.DataAccessLayer.EntityFramework
         {
             //using var context = new BookStoreContext();
             return _context.Products
-                .Include(p => p.Writer)  // Yazar tablosu ile ilişkilendirme
+                  // Yazar tablosu ile ilişkilendirme
                 .Include(p => p.Category) // Kategori tablosu ile ilişkilendirme
                 .ToList();
         }
@@ -81,7 +81,7 @@ namespace BookStore.DataAccessLayer.EntityFramework
         {
             return _context.Products
                 .Include(p => p.Category)
-                .Include(p => p.Writer)
+                
                 .ToList();
         }
     }

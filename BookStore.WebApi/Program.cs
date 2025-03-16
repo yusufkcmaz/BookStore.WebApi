@@ -23,8 +23,12 @@ builder.Services.AddScoped<IBillboardService , BillboardManager >();
 builder.Services.AddScoped<IFeatureDal , EfFeatureDal>();
 builder.Services.AddScoped<IFeatureService , FeatureManager>();
 
-builder.Services.AddScoped<IWriterDal , EfWriterDal>(); 
-builder.Services.AddScoped<IWriterService , WriterManager >();
+builder.Services.AddScoped<ISubscribeDal, EfSubscribeDal>();
+builder.Services.AddScoped<ISubscribeService , SubscribeManager>();
+
+builder.Services.AddScoped<IQuoteDal, EfQuoteDal>();
+builder.Services.AddScoped<IQuoteService, QuoteManager>();
+
 
 
 

@@ -12,7 +12,7 @@ namespace BookStore.WebUI.Dtos.ProductsDtos
 
 
         public int? WriterId { get; set; }
-        public Writer Writer { get; set; } 
+      
         public int? CategoryID { get; set; }
         public virtual Category Category { get; set; }
     }

@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.BusinessLayer.Abstract
 {
-    public interface IWriterService :IGenericService<Writer>
+    public interface ISubscribeService :IGenericService<Subscribe>
     {
-        public List<Writer> GetAllWriter();
     }
 }
