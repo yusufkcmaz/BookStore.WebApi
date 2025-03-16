@@ -80,7 +80,7 @@ namespace BookStore.WebUI.Controllers
                 return View(values);
             }
          
-            return View();
+            return View("ProductList");
         }
 
         [HttpPost]

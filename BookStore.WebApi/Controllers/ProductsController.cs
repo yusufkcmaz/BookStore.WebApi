@@ -16,14 +16,14 @@ namespace BookStore.WebApi.Controllers
         private readonly IProductService _productService;
         private readonly IMapper _mapper;
         private readonly ICategoryService _categoryService;
-       
+
 
         public ProductsController(IProductService productService, IMapper mapper, ICategoryService categoryService)
         {
             _productService = productService;
             _mapper = mapper;
             _categoryService = categoryService;
-           
+
         }
 
 
@@ -32,12 +32,12 @@ namespace BookStore.WebApi.Controllers
         public IActionResult ProductList()
         {
 
-            var product = _productService.TGetAll();
+            //var product = _productService.TGetAll();
 
-            var dto = _mapper.Map<List<ResultProductDetailDto>>(product);
-            return Ok(dto);
+            //var dto = _mapper.Map<List<ResultProductDetailDto>>(product);
+            //return Ok(dto);
 
-            ////return Ok(_productService.TGetAll());
+            return Ok(_productService.TGetAll());
             ///
             //var product = _productService.TGetAll();
             //var productdto = _mapper.Map<List<ResultProductDetailDto>>(product);
@@ -77,7 +77,7 @@ namespace BookStore.WebApi.Controllers
         public IActionResult UpdateProduct(UpdateProductDto update)
         {
             var product = _mapper.Map<Product>(update);
-             _productService.TUpdate(product);
+            _productService.TUpdate(product);
             return Ok("Güncelleme başarılı kenks :");
             //_productService.TUpdate(_product);
             //return Ok("Güncelleme işlemi başarıyla tamamlandı");
@@ -92,7 +92,6 @@ namespace BookStore.WebApi.Controllers
         }
 
         [HttpGet("GetProduct")]
-
         public IActionResult GetProduct(int id)
         {
             var valuw = _productService.TGetById(id);
@@ -111,8 +110,8 @@ namespace BookStore.WebApi.Controllers
         public IActionResult GetRandomProduct()
         {
             var product = _productService.TGetRandomProduct();
-            var dto = _mapper.Map<RandomProductDto>(product);
-            return Ok(dto);
+            return Ok(product);
+           
 
         }
 

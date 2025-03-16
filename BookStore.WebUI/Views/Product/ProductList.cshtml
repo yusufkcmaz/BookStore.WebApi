@@ -1,5 +1,4 @@
-﻿
-@model List<BookStore.WebUI.Dtos.ProductsDtos.ResultProductDto>
+﻿@model List<BookStore.WebUI.Dtos.ProductsDtos.ResultProductDto>
 @{
     Layout = null;
 }
@@ -12,8 +11,12 @@
         <tr>
             <th>#</th>
             <th>Ürün Adı</th>
+            <th>Ürün Açıklması</th>
+            <th>Ürün Görseli</th>
+            <th>Ürün Yazar</th>
             <th>Ürün stok</th>
             <th>Ürün fiyat</th>
+
             <th>Sil</th>
             <th>Güncelle</th>
 
@@ -23,6 +26,11 @@
             <tr>
                 <td>@item.ProductId</td>
                 <td>@item.ProductName</td>
+                <td>@item.ProductDescription</td>
+                <td>
+                    <img src="@item.ProductImageUrl" alt="@item.ProductName" style="width: 95px; max-height: 100px;" />
+                </td>
+                <td>@item.ProductWriterName</td>
                 <td>@item.ProductStock</td>
                 <td>@item.ProductPrice</td>
                 <td><a href="/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
