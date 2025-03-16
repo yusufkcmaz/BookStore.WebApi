@@ -16,7 +16,7 @@ namespace BookStore.WebUI.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responsemessage = await client.GetAsync("https://localhost:7293/api/Features/GetLastFourFeature"); 
+            var responsemessage = await client.GetAsync("https://localhost:7293/api/Products/GetLastFourFeature"); 
             if (responsemessage.IsSuccessStatusCode)
             {
                 var data = await responsemessage.Content.ReadAsStringAsync();

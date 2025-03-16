@@ -114,7 +114,15 @@ namespace BookStore.WebApi.Controllers
            
 
         }
-
+        [HttpGet("GetLastFourFeature")]
+        public IActionResult GetlastFourFeatures()
+        {
+            var result = _productService.TGetAll()
+                .OrderByDescending(x => x.ProductId)
+                .Take(4)
+                .ToList();
+            return Ok(result);
+        }
 
 
     }
