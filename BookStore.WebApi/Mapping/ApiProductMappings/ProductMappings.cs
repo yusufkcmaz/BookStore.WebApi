@@ -13,16 +13,22 @@ namespace BookStore.WebApi.Mapping.ApiProductMappings
             //      .ForMember(dest => dest.ProductImageUrl, opt => opt.MapFrom(src => src.ImageUrl))
             //.ReverseMap();
 
-                                
+
             CreateMap<Product, ResulProductDto>().ReverseMap();
 
 
             CreateMap<Product, ResultProductDetailDto>()
-            //      .ForMember(dest => dest.WriterName, opt => opt.MapFrom(src => src.Writer != null ? src.Writer.Name : "Unknown"))
-            //.ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category != null ? src.Category.CategoryName : "No Category"))
-            .ReverseMap();
+     .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.ProductName))
+     .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName)) // Tek seferde doğru eşleme
+     .ForMember(dest => dest.ProductPrice, opt => opt.MapFrom(src => src.ProductPrice))
+     .ForMember(dest => dest.ProductImageUrl, opt => opt.MapFrom(src => src.ProductImageUrl))
+     .ForMember(dest => dest.ProductWriterName, opt => opt.MapFrom(src => src.ProductWriterName))
 
-            CreateMap<Product , UpdateProductDto>()
+
+            .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName)).ReverseMap();
+
+
+            CreateMap<Product, UpdateProductDto>()
                 .ReverseMap();
 
             CreateMap<Product, RandomProductDto>().ReverseMap();

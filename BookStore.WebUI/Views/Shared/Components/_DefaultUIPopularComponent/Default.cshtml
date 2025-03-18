@@ -1,48 +1,123 @@
-﻿
-@*
-    _DefaultUIPopularComponent
-*@
+﻿@model List<BookStore.WebUI.Dtos.CategoryDtos.ResultCategoryDto>
+
 <section id="popular-books" class="bookshelf py-5 my-5">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-
 				<div class="section-header align-center">
 					<div class="title">
-						<span>Some quality items</span>
+						<span>Festina lente </span>
 					</div>
-					<h2 class="section-title">Popular Books</h2>
+					<h2 class="section-title">Ürün Seçimi</h2>
 				</div>
 
 				<ul class="tabs">
-					<li data-tab-target="#all-genre" class="active tab">All Genre</li>
-					<li data-tab-target="#business" class="tab">Business</li>
-					<li data-tab-target="#technology" class="tab">Technology</li>
-					<li data-tab-target="#romantic" class="tab">Romantic</li>
-					<li data-tab-target="#adventure" class="tab">Adventure</li>
-					<li data-tab-target="#fictional" class="tab">Fictional</li>
+					@foreach (var category in Model.Select(p => p.CategoryName).Distinct())
+					{
+						<li data-tab-target="#@category.Replace(" ", "-").ToLower()" class="tab">@category</li>
+					}
 				</ul>
 
 				<div class="tab-content">
-					<div id="all-genre" data-tab-content class="active">
-						<div class="row">
+					@foreach (var category in Model.Select(p => p.CategoryName).Distinct())
+					{
+						<div id="@category.Replace(" ", "-").ToLower()" class="tab-pane">
+							<h2>@category Kitapları</h2>
+							<ul class="product-list">
+								@foreach (var product in Model.Where(p => p.CategoryName == category))
+								{
+									<div class="col-md-3 ">
+																
+									
+										 <div class="product-item "> 
+											<figure class="product-style">
+												<img src="@product.ProductImageUrl" alt="Book" class="product-item" width="10" height="20">
+												<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+													Add to Cart
+												</button>
+											 </figure> 
+											<figcaption>
+												<h3>@product.ProductName</h3>
+												<span>@product.ProductWriterName</span>
+												<div class="item-price">$ @product.ProductPrice</div>
+											</figcaption>
+										</div>
+									</div>
+									
+								}
+							</ul>
+						</div>
+					}
+				</div>
 
-							<div class="col-md-3">
-								<div class="product-item">
-									<figure class="product-style">
-										<img src="~/booksaw/images/tab-item1.jpg" alt="Books" class="product-item">
-										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-											Add to
-											Cart
-										</button>
-									</figure>
-									<figcaption>
-										<h3>Portrait photography</h3>
-										<span>Adam Silber</span>
-										<div class="item-price">$ 40.00</div>
-									</figcaption>
-								</div>
-							</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-pane');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Tüm tab'ları geçersiz hale getir
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Tüm içerikleri geçersiz hale getir
+            tabContents.forEach(content => content.classList.remove('active'));
+            const target = document.querySelector(tab.getAttribute('data-tab-target'));
+            target.classList.add('active');
+        });
+    });
+
+    // Sayfa yüklendiğinde ilk tab'ı aktif et
+    if (tabs.length > 0) {
+        tabs[0].click();
+    }
+</script>
+
+
+@* 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 							<div class="col-md-3">
 								<div class="product-item">
@@ -464,8 +539,4 @@
 
 				</div>
 
-			</div><!--inner-tabs-->
-
-		</div>
-	</div>
-</section>
+			</div><!--inner-tabs--> *@

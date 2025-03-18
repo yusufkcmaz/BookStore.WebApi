@@ -69,5 +69,10 @@ namespace BookStore.BusinessLayer.Concrete
         {
           return _productDal.GetProductsWithCategories();
         }
+
+        public List<Product> GetCategoryAndProduct()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

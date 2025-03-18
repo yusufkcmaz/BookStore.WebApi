@@ -17,7 +17,7 @@ namespace BookStore.EntityLayer.Concrete
 
         //Bir kategorinin içinde birden fazla kitap olabilir
         [JsonIgnore]
-        public virtual List<Product>? Products { get; set; }
+        public virtual List<Product> Products { get; set; }
 
     }
 }

@@ -11,6 +11,6 @@ namespace BookStore.BusinessLayer.Abstract
     {
 
 
-
+        List<Product> TGetCategoriesWithProducts();
     }
 }

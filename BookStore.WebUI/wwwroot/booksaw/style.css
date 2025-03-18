@@ -2369,12 +2369,15 @@ footer#footer {
 }
 
 .product-style img.product-item {
-  position: relative;
-  background: #EFEEE8;
-  border: 1px solid #EAE8DF;
-  padding: 15%;
-  cursor: pointer;
-  width: 100%;
+    
+  /*css test*/
+    
+    position: relative;
+    background: #EFEEE8;
+    border: 1px solid #EAE8DF;
+    padding: 15%;
+    cursor: pointer;
+    width: 100%;
 }
 
 .product-style button.add-to-cart {

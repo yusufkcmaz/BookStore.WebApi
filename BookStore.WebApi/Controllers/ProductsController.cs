@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Runtime.CompilerServices;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace BookStore.WebApi.Controllers
 {
@@ -46,18 +47,12 @@ namespace BookStore.WebApi.Controllers
 
 
 
-        [HttpGet("GetCategoryAndWriter")]
+        [HttpGet("GetCategoryAndWriter")] 
         public IActionResult GetProductsWithCategories()
         {
-
-            var categories = _categoryService.TGetAll();  // Kategorileri al
-            //var writers = _writerService.TGetAll();
-            var result = new
-            {
-                Categories = categories,
-                //Writers = writers
-            };
-            return Ok(result);
+            var product = _productService.TGetProductsWithCategories();
+            var dto = _mapper.Map<List<ResultProductDetailDto>>(product);
+            return Ok(dto);
         }
 
 

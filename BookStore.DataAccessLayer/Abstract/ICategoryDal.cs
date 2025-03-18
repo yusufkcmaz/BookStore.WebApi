@@ -12,5 +12,7 @@ namespace BookStore.DataAccessLayer.Abstract
         // Kategoriye özel metod-en son eklenen kategorileri
         //List<Category> GetLatestCategories(int count);
 
+        List<Product> GetCategoriesWithProducts();
+
     }
 }

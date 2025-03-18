@@ -1,7 +1,10 @@
-﻿using BookStore.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using BookStore.BusinessLayer.Abstract;
 using BookStore.EntityLayer.Concrete;
+using BookStore.WebApi.Dtos.ApiCategoryDto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Net;
 using static System.Net.WebRequestMethods;
 
@@ -13,9 +16,11 @@ namespace BookStore.WebApi.Controllers
     {
         private readonly ICategoryService _categoryService;
        // controller iş mantığı ilgilenir, yani ICategoryService kullanılır.
-        public CategoriesController(ICategoryService categoryService)
+       private readonly IMapper _mapper;
+        public CategoriesController(ICategoryService categoryService, IMapper mapper)
         {
             _categoryService = categoryService;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -48,6 +53,23 @@ namespace BookStore.WebApi.Controllers
             _categoryService.TUpdate(category);
             return Ok("Güncelleme işlemi başarılı");
         }
+
+        [HttpGet("GetCategoriesWithProducts")]
+        public IActionResult GetCategoriesWithProducts()
+        {
+            var categories =  _categoryService.TGetCategoriesWithProducts(); // Kategorileri ve içindeki ürünleri çek
+
+            if (categories == null || !categories.Any())
+            {
+                return NotFound("Kategoriler bulunamadı."); // Eğer veri yoksa 404 döndür
+            }
+
+            var categoryDtos = _mapper.Map<List<ResultCategoryDto>>(categories); // DTO'ya map et
+
+            return Ok(categoryDtos); // JSON formatında döndür
+        }
+
+
     }
 
 }
