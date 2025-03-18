@@ -33,9 +33,19 @@ namespace BookStore.BusinessLayer.Concrete
             return _quoteDal.GetAll();
         }
 
+        public List<Quote> TGetAllQuotes()
+        {
+           return _quoteDal.GetAllQuotes();
+        }
+
         public Quote TGetById(int id)
         {
             return _quoteDal.GetById(id) ;
+        }
+
+        public Quote TGetRandomQuote()
+        {
+            return _quoteDal.GetRandomQuote();
         }
 
         public void TUpdate(Quote entity)

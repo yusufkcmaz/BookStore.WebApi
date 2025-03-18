@@ -24,6 +24,8 @@
 						<div id="@category.Replace(" ", "-").ToLower()" class="tab-pane">
 							<h2>@category Kitapları</h2>
 							<ul class="product-list">
+
+								<div class="row">
 								@foreach (var product in Model.Where(p => p.CategoryName == category))
 								{
 									<div class="col-md-3 ">
@@ -33,7 +35,7 @@
 											<figure class="product-style">
 												<img src="@product.ProductImageUrl" alt="Book" class="product-item" width="10" height="20">
 												<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-													Add to Cart
+												Kitap detayları
 												</button>
 											 </figure> 
 											<figcaption>
@@ -45,6 +47,7 @@
 									</div>
 									
 								}
+								</div>
 							</ul>
 						</div>
 					}

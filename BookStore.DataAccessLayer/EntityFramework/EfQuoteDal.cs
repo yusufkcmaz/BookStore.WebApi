@@ -12,8 +12,25 @@ namespace BookStore.DataAccessLayer.EntityFramework
 {
     public class EfQuoteDal : GenericRepository<Quote>, IQuoteDal
     {
+        private readonly BookStoreContext _context;
         public EfQuoteDal(BookStoreContext context) : base(context)
         {
+            _context = context;
+        }
+
+        public List<Quote> GetAllQuotes()
+        {
+            return _context.Quotes.ToList();
+        }
+
+        public Quote GetRandomQuote()
+        {
+            var quote = _context.Set<Quote>()
+                .OrderBy(x => Guid.NewGuid())  
+                .Take(1)  
+                .FirstOrDefault();  
+
+            return quote; 
         }
     }
 }

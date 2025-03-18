@@ -9,5 +9,7 @@ namespace BookStore.BusinessLayer.Abstract
 {
     public interface IQuoteService: IGenericService<Quote> 
     {
+        Quote TGetRandomQuote();
+        List<Quote> TGetAllQuotes();
     }
 }
