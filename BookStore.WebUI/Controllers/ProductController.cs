@@ -76,7 +76,7 @@ namespace BookStore.WebUI.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<GetByIdProductDto>(jsonData);
+                var values = JsonConvert.DeserializeObject<UpdateProductDto>(jsonData);
                 return View(values);
             }
          

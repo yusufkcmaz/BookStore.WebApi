@@ -34,8 +34,9 @@ namespace BookStore.WebApi.Controllers
 
         [HttpPost]
         //kategori verisini alır.JSON formatında gelir.
-        public IActionResult CreateCategory(Category category)
+        public IActionResult CreateCategory(CreateCategoryDto categoryDto)
         {
+            var category = _mapper.Map<Category>(categoryDto);
             _categoryService.TAdd(category);
             return Ok("Ekleme işlemi başarılı");
         }
@@ -48,8 +49,9 @@ namespace BookStore.WebApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateCategory(Category category)
+        public IActionResult UpdateCategory(UpdateCategoryDto update)
         {
+            var category = _mapper.Map<Category>(update);
             _categoryService.TUpdate(category);
             return Ok("Güncelleme işlemi başarılı");
         }

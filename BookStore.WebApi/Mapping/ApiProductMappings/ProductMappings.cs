@@ -9,7 +9,7 @@ namespace BookStore.WebApi.Mapping.ApiProductMappings
     {
         public ProductMappings()
         {
-            //CreateMap<Product, CreateProductDto>()
+            CreateMap<Product, CreateProductDto>().ReverseMap();
             //      .ForMember(dest => dest.ProductImageUrl, opt => opt.MapFrom(src => src.ImageUrl))
             //.ReverseMap();
 

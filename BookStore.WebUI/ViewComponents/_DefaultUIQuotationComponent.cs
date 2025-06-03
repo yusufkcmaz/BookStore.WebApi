@@ -2,6 +2,7 @@
 using BookStore.WebUI.Dtos.QuoteDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace BookStore.WebUI.ViewComponents
 {
@@ -28,8 +29,8 @@ namespace BookStore.WebUI.ViewComponents
                 return View(values);
             }
 
+            return View();
 
-            return View();  
         }
     }
 }

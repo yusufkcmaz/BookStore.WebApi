@@ -13,7 +13,7 @@ namespace BookStore.WebApi.Dtos.ApiProductDto
         public string ProductDescription { get; set; }
         public string ProductWriterName { get; set; }
 
-
+         
         public int CategoryId { get; set; }
     }
 }

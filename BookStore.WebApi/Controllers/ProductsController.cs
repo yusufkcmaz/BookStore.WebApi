@@ -78,7 +78,7 @@ namespace BookStore.WebApi.Controllers
             //return Ok("Güncelleme işlemi başarıyla tamamlandı");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
 
         public IActionResult DeleteProduct(int id)
         {

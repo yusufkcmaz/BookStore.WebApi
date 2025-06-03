@@ -4,19 +4,23 @@
 *@
 
 <section id="quotation" class="align-center pb-5 mb-5">
-	<div class="inner-content">
-		<h2 class="section-title divider">Günün Alıntısı</h2>
+    <div class="inner-content">
+        <h2 class="section-title divider">Günün Alıntısı</h2>
 
 
-		<blockquote data-aos="fade-up">
-		
-				
-			
-			<q>
-		@Model.Quotedtext
-			</q>
-			<div class="author-name">@Model.WriterQuote</div>
-			
-		</blockquote>
-	</div>
+        @if (Model != null)
+        {
+            <blockquote data-aos="fade-up">
+                <q>@Model.Quotedtext</q>
+                <div class="author-name">@Model.WriterQuote</div>
+            </blockquote>
+        }
+        else
+        {
+            <blockquote data-aos="fade-up">
+                <q>Bugün için alıntı bulunamadı.</q>
+                <div class="author-name">Sistem</div>
+            </blockquote>
+        }
+    </div>
 </section>

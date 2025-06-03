@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace BookStore.EntityLayer.Concrete
 {
     public class Product
-    {
+    { 
         [Key]
         public int ProductId { get; set; }
         public string ProductName { get; set; }

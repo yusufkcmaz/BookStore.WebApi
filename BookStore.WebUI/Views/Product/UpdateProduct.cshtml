@@ -1,4 +1,4 @@
-﻿@model BookStore.WebUI.Dtos.ProductsDtos.GetByIdProductDto
+﻿@model BookStore.WebUI.Dtos.ProductsDtos.UpdateProductDto
 @{
     Layout = null;
 }
@@ -13,6 +13,23 @@
         <label>Ürün adı</label>
         <input type="text" asp-for="ProductName" class="form-control" />
         <br />
+
+        <br />
+        <label>Ürün Açıklması</label>
+        <input type="text" asp-for="ProductDescription" class="form-control" />
+        <br />
+
+
+        <br />
+        <label>Ürün Görseli</label>
+        <input type="text" asp-for="ProductImageUrl" class="form-control" />
+        <br />
+
+        <br />
+        <label>Ürün Yazar</label>
+        <input type="text" asp-for="ProductWriterName" class="form-control" />
+        <br />
+
 
         <br />
         <label>Ürün Fiyatı</label>
