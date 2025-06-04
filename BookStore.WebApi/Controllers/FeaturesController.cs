@@ -53,8 +53,7 @@ namespace BookStore.WebApi.Controllers
             _featureService.TUpdate(feature);   
             return Ok("İşlem Başarılı");
         }
-
-        [HttpDelete]
+        [HttpDelete("{id}")]
 
         public IActionResult Delete(int id)
         {

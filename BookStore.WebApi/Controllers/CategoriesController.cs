@@ -23,6 +23,21 @@ namespace BookStore.WebApi.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetCategoryById(int id)
+        {
+            var category = _categoryService.TGetById(id); // Serviste tek kayıt getiren metodun olsun
+            if (category == null)
+                return NotFound("Kategori bulunamadı");
+
+            var categoryDto = _mapper.Map<GetByIdCategoryDto>(category); 
+            return Ok(categoryDto);
+        }
+
+
+
+
+
         [HttpGet]
         //  API endpoint olarak çalışır
 
@@ -41,7 +56,7 @@ namespace BookStore.WebApi.Controllers
             return Ok("Ekleme işlemi başarılı");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteCategory(int id)
         {
             _categoryService.TDelete(id);

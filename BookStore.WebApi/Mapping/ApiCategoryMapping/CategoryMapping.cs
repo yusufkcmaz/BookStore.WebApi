@@ -2,6 +2,8 @@
 using BookStore.EntityLayer.Concrete;
 using BookStore.WebApi.Dtos.ApiCategoryDto;
 
+
+
 namespace BookStore.WebApi.Mapping.ApiCategoryMapping
 {
     public class CategoryMapping :Profile
@@ -11,6 +13,7 @@ namespace BookStore.WebApi.Mapping.ApiCategoryMapping
             CreateMap<Product ,ResultCategoryDto >().ReverseMap();
             CreateMap<Category , CreateCategoryDto>().ReverseMap();
             CreateMap<Category , UpdateCategoryDto>().ReverseMap();
+            CreateMap<Category,  GetByIdCategoryDto>().ReverseMap();
         }
     }
 }

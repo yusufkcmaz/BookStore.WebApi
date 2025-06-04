@@ -1,8 +1,12 @@
-﻿namespace BookStore.WebUI.Dtos.CategoryDtos
+﻿using System.Runtime;
+
+namespace BookStore.WebUI.Dtos.CategoryDtos
 {
-    public class GetByIdCategoryDto
+    public class GetByIdCategory 
     {
-        public int CategoryID { get; set; }
-        public string CategoryName { get; set; }
+        
+            public int CategoryID { get; set; }
+            public string CategoryName { get; set; }
+        
     }
 }

@@ -86,9 +86,42 @@ namespace BookStore.WebUI.Controllers
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            await client.DeleteAsync("https://localhost:7293/api/Categories?id=" + id);
+            await client.DeleteAsync($"https://localhost:7293/api/Categories/{id}");
             return RedirectToAction("CategoryList");
 
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateCategory(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.GetAsync($"https://localhost:7293/api/Categories/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateCategoryDto>(data);
+                return View(values);
+            }
+            return RedirectToAction("CategoryList");
+
+
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto categoryDto)
+        {
+
+            var client = _httpClientFactory.CreateClient(); 
+            var jsonData = JsonConvert.SerializeObject(categoryDto);
+            StringContent content = new(jsonData, Encoding.UTF8, "application/json");
+            var response = await client.PutAsync("https://localhost:7293/api/Categories", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("CategoryList");
+            }
+            return View();
         }
     }
 }

@@ -1,0 +1,22 @@
+﻿@using BookStore.WebUI.Dtos.CategoryDtos
+@model UpdateCategoryDto
+@{
+    Layout = null;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+<form asp-action="UpdateCategory" method="post">
+    <div class="form-group">
+        <label asp-for="categoryID">Kategori</label>
+        <input asp-for="categoryID" class="form-control" readonly/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="categoryName">Kategori Adı</label>
+        <input asp-for="categoryName" class="form-control" />
+        <span asp-validation-for="categoryName" class="text-danger"></span>
+
+        <button type="submit" class="btn btn-primary">Güncelle</button>
+    </div>
+</form>
