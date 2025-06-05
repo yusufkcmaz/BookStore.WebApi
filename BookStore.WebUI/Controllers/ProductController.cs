@@ -55,14 +55,12 @@ namespace BookStore.WebUI.Controllers
         public async Task<IActionResult> DeleteProduct(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("https://localhost:7293/api/Products?id=" + id);
+            var responseMessage = await client.DeleteAsync($"https://localhost:7293/api/Products/{id}");
 
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("ProductList");
-            }
+          
 
-            return View();
+            TempData["ErrorMessage"] = "Silme işlemi başarısız oldu.";
+            return RedirectToAction("ProductList");
 
         }
 

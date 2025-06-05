@@ -5,7 +5,7 @@
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
 
-<form method="post">
+<form asp-action="CreateProduct" asp-controller="Product" method="post">
     <div class="container">
 
         <br />
@@ -14,17 +14,42 @@
         <br />
 
         <br />
-        <label>Ürün Fiyatı</label>
-        <input type="text" asp-for="ProductPrice" class="form-control" />
-        <br />
-
-        <br />
         <label>Ürün stok</label>
         <input type="text" asp-for="ProductStock" class="form-control" />
         <br />
 
 
-        <button class="btn btn-primary">EKLE</button>
+        <br />
+        <label>Ürün Fiyatı</label>
+        <input type="text" asp-for="ProductPrice" class="form-control" />
+        <br />
+
+        <br />
+        <label>Ürün Görsel</label>
+        <input type="text" asp-for="ProductImageUrl" class="form-control" />
+        <br />
+
+
+        <br />
+        <label>Ürün Açıklama</label>
+        <input type="text" asp-for="ProductDescription" class="form-control" />
+        <br />
+
+
+        <br />
+        <label>Ürün Yazar</label>
+        <input type="text" asp-for="ProductWriterName" class="form-control" />
+        <br />
+
+
+         <br />
+        <label>Kategorisi</label>
+        <input type="text" asp-for="CategoryId" class="form-control" />
+        <br /> 
+
+
+        <button type="submit" class="btn btn-primary">EKLE</button>
+
 
 
     </div>

@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace BookStore.EntityLayer.Concrete
-{
+{ 
     public class Product
     { 
         [Key]
