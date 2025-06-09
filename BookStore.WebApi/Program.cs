@@ -29,6 +29,17 @@ builder.Services.AddScoped<ISubscribeService , SubscribeManager>();
 builder.Services.AddScoped<IQuoteDal, EfQuoteDal>();
 builder.Services.AddScoped<IQuoteService, QuoteManager>();
 
+//CORS ayar.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 
 
 
@@ -45,6 +56,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+
+app.UseCors("AllowAll"); 
+
+
 
 app.UseHttpsRedirection();
 
