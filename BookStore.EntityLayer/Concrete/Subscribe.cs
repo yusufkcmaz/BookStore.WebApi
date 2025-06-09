@@ -9,6 +9,7 @@ namespace BookStore.EntityLayer.Concrete
     public class Subscribe
     {
         public int SubscribeId { get; set; }
-        public int Mail { get; set; }
+        public string  Mail { get; set; }
+        public DateTime SubcribeDate  { get; set; } = DateTime.Now; //->Default tarih atama 
     }
 }
