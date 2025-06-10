@@ -1,0 +1,30 @@
+﻿
+
+@using BookStore.EntityLayer.Concrete
+@using BookStore.WebUI.Dtos.SubscribeDtos
+@model List<ResultSubscribeDto>
+
+<h2>Aboneler</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Abonelik Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sub in Model)
+        {
+            <tr>
+                <td>@sub.SubscribeId</td>
+                <td>@sub.Mail</td>
+                <td>@sub.SubcribeDate.ToString("dd.MM.yyyy HH:mm")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

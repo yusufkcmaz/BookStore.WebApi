@@ -19,6 +19,15 @@ namespace BookStore.WebApi.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
+        public IActionResult SubscribeList()
+        {
+            var result = _subscribeService.TGetAll();
+            return Ok(result);
+        }
+
+
+
         [HttpPost("addsubscribe")]
         public IActionResult AddSubscribe([FromForm] string Mail)
         {

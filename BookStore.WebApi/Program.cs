@@ -29,6 +29,13 @@ builder.Services.AddScoped<ISubscribeService , SubscribeManager>();
 builder.Services.AddScoped<IQuoteDal, EfQuoteDal>();
 builder.Services.AddScoped<IQuoteService, QuoteManager>();
 
+builder.Services.AddScoped<ISubscribeDal, EfSubscribeDal>();
+builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
+
+var testService = builder.Services.BuildServiceProvider().GetService<ISubscribeService>();
+Console.WriteLine(testService == null ? "Baðýmlýlýk yüklenemedi!" : "Baðýmlýlýk baþarýyla yüklendi!");
+
+
 //CORS ayar.
 builder.Services.AddCors(options =>
 {
@@ -70,3 +77,16 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+//app.MapControllerRoute(
+//    name: "areas",
+//    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+//);
+
+
+//app.MapAreaControllerRoute(
+//    name: "admin",
+//      areaName: "Admin",
+//      pattern: "Admin/{controller=Home}/{action=Index}/{id?}"
+//    );
