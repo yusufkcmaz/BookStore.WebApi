@@ -15,5 +15,7 @@ namespace BookStore.DataAccessLayer.EntityFramework
         public EfSubscribeDal(BookStoreContext context) : base(context)
         {
         }
+
+        
     }
 }

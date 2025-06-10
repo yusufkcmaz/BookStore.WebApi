@@ -9,5 +9,6 @@ namespace BookStore.BusinessLayer.Abstract
 {
     public interface ISubscribeService :IGenericService<Subscribe>
     {
+      
     }
 }

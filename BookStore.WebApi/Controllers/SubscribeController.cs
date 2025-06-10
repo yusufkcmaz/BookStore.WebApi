@@ -3,6 +3,8 @@ using BookStore.BusinessLayer.Abstract;
 using BookStore.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Mail;
+using System.Net;
 
 namespace BookStore.WebApi.Controllers
 {
@@ -12,6 +14,12 @@ namespace BookStore.WebApi.Controllers
     {
         private readonly ISubscribeService _subscribeService;
         private readonly IMapper _mapper;
+
+       private readonly string smtpHost = "smtp.gmail.com";
+        private readonly int smtpPort = 587;
+        private readonly string smtpUser = "Bookstore@gmail.com";
+        private readonly string smtpPass = "ubitjxmdyzxyyylz";
+
 
         public SubscribeController(ISubscribeService subscribeService, IMapper mapper)
         {
@@ -45,9 +53,52 @@ namespace BookStore.WebApi.Controllers
             var subscribe = new Subscribe { Mail = Mail };
             _subscribeService.TAdd(subscribe);
 
+            try
+            {
+                SendMail(Mail);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Abonelik başarılı ama mail gönderilemedi: " + ex.Message);
+            }
+
+            //_emailsender.SendEmail(Mail,
+            //    "Booksaw abonelik onayı",
+            //    "Merhaba booksawa abone olduğunuz için teşkkürler");
+
+
             return Ok("Abonelik başarılı");
         }
+
+        private void SendMail(string toEmail)
+        {
+            var fromAddress = new MailAddress(smtpUser, "BookStore");
+            var toAddress = new MailAddress(toEmail);
+
+            var smtp = new SmtpClient
+            {
+                Host = smtpHost,
+                Port = smtpPort,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(smtpUser, smtpPass)
+            };
+
+            using var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = "BookStore Aboneliğiniz Onaylandı",
+                Body = "Merhaba, BookStore blogumuza abone olduğunuz için teşekkür ederiz! En son kitaplar ve haberler size ulaşacak.",
+                IsBodyHtml = false
+            };
+
+            smtp.Send(message);
+        }
     }
-
-
 }
+
+
+
+
+

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.BusinessLayer.Concrete
 {
-    public class SubscribeManager : ISubscribeService
+    public class SubscribeManager : ISubscribeService 
     {
         private readonly ISubscribeDal _subscribeDal;
 
