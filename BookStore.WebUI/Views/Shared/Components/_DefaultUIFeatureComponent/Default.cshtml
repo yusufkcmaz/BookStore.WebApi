@@ -3,99 +3,107 @@
 @*
     _DefaultUIFeatureComponen
 *@
+
+
+
+
+
 <section id="featured-books" class="py-5 my-5">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 
-				<div class="section-header align-center">
-					<div class="title">
-						<span>Bitmek tükenmeyen uzun bir yol.</span>
-					</div>
-					<h2 class="section-title">Bu Ay Öne çıkan kitaplarımız</h2>
-				</div>
+                <div class="section-header align-center">
+                    <div class="title">
+                        <span>Bitmek tükenmeyen uzun bir yol.</span>
+                    </div>
+                    <h2 class="section-title">Bu Ay Öne çıkan kitaplarımız</h2>
+                </div>
 
-				<div class="product-list" data-aos="fade-up">
-					<div class="row">
-						@foreach (var front in Model)
-						{
-							<div class="col-md-3">
-								<div class="product-item">
-									<figure class="product-style">
-										<img src="@front.ProductImageUrl" alt="Kitap" class="product-item">
-										<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
+                <div class="product-list" data-aos="fade-up">
+                    <div class="row">
+                        @foreach (var front in Model)
+                        {
+                            <div class="col-md-3">
+                                <div class="product-item">
+                                    <figure class="product-style">
+                                        <img src="@front.ProductImageUrl" alt="Kitap" class="product-item">
+                                        @* <button type="button" class="add-to-cart" data-product-tile="add-to-cart">
 										  Kitap Detay	
-										
-										</button>
-									</figure>
-									<figcaption>
-										<h3>@front.ProductName</h3>
-										<span>@front.ProductWriterName</span>
-										 <div class="item-price">@front.ProductPrice ₺</div> 
-									</figcaption>
-								</div>
-							</div>
 
-						}
-				@* 
-						<div class="col-md-3">
-							<div class="product-item">
-								<figure class="product-style">
-									<img src="~/booksaw/images/product-item2.jpg" alt="Books" class="product-item">
-									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-										Add to
-										Cart
-									</button>
-								</figure>
-								<figcaption>
-									<h3>Great travel at desert</h3>
-									<span>Sanchit Howdy</span>
-									<div class="item-price">$ 38.00</div>
-								</figcaption>
-							</div>
-						</div>
-
-						<div class="col-md-3">
-							<div class="product-item">
-								<figure class="product-style">
-									<img src="~/booksaw/images/product-item3.jpg" alt="Books" class="product-item">
-									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-										Add to
-										Cart
-									</button>
-								</figure>
-								<figcaption>
-									<h3>The lady beauty Scarlett</h3>
-									<span>Arthur Doyle</span>
-									<div class="item-price">$ 45.00</div>
-								</figcaption>
-							</div>
-						</div>
-
-						<div class="col-md-3">
-							<div class="product-item">
-								<figure class="product-style">
-									<img src="~/booksaw/images/product-item4.jpg" alt="Books" class="product-item">
-									<button type="button" class="add-to-cart" data-product-tile="add-to-cart">
-										Add to
-										Cart
-									</button>
-								</figure>
-								<figcaption>
-									<h3>Once upon a time</h3>
-									<span>Klien Marry</span>
-									<div class="item-price">$ 35.00</div>
-								</figcaption>
-							</div>
-						</div> *@
-
-					</div><!--ft-books-slider-->
-				</div><!--grid-->
+										</button> *@
+                                        <button type="button" class="show-book-detail btn btn-outline-primary btn-sm mt-2"
+                                                data-name="@front.ProductName"
+                                                data-writer="@front.ProductWriterName"
+                                                data-price="@front.ProductPrice"
+                                                data-image="@front.ProductImageUrl"
+                                                data-description="@front.ProductDescription">
+                                            Kitap Detay
+                                        </button>
 
 
-			</div><!--inner-content-->
-		</div>
 
-	
-	</div>
+
+
+
+                                    </figure>
+                                    <figcaption>
+                                        <h3>@front.ProductName</h3>
+                                        <span>@front.ProductWriterName</span>
+                                        <div class="item-price">@front.ProductPrice ₺</div>
+                                    </figcaption>
+                                </div>
+                            </div>
+
+                        }
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".show-book-detail").forEach(button => {
+            button.addEventListener("click", function () {
+                const name = this.dataset.name;
+                const writer = this.dataset.writer;
+                const price = this.dataset.price;
+                const image = this.dataset.image;
+                const description = this.dataset.description;
+
+                Swal.fire({
+                    title: name,
+                    html: `
+                        <div style="display: flex; align-items: flex-start; gap: 15px;">
+                            <img src="${image}" alt="Kitap Görseli" style="width: 140px; height: 200px; object-fit: cover; border-radius: 8px;">
+                            <div style="text-align: left;">
+                                <p><strong>Yazar:</strong> ${writer}</p>
+                                <p><strong>Fiyat:</strong> ${price} ₺</p>
+                                <p><strong>Açıklama:</strong><br>${description}</p>
+                            </div>
+                        </div>
+                    `,
+                    showCloseButton: true,
+                    confirmButtonText: 'Kapat',
+                    width: 600,
+                    background: '#fefefe',
+                    backdrop: `rgba(0,0,0,0.4)`
+                });
+            });
+        });
+    });
+</script>

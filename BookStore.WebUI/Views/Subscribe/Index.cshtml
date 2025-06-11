@@ -26,5 +26,24 @@
     </tbody>
 </table>
 
+<hr />
+
+<h3>Tüm abonelere mail gönder</h3>
+<form method="post" asp-action="SendsMail">
+    <div class="mb-4">
+        <label>Konu</label>
+        <input  type="text" name="Subject" class="form-control" required/>
+
+    </div>
+    <div class="mb-3">
+        <label>İçerik:</label>
+        <textarea name="Body" class="form-control" rows="6" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Gönder</button>
+</form>
+
+
+
+
 
 
