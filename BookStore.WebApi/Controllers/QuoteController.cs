@@ -12,17 +12,17 @@ namespace BookStore.WebApi.Controllers
     [ApiController]
     public class QuoteController : ControllerBase
     {
-       
+
         private readonly IQuoteService _quoteService;
         private readonly IMapper _mapper;
 
         public QuoteController(
-            
+
             IQuoteService quoteService,
             IMapper mapper)
         {
             _quoteService = quoteService;
-           
+
             _mapper = mapper;
         }
 
@@ -30,7 +30,7 @@ namespace BookStore.WebApi.Controllers
 
         public IActionResult QuoteList()
         {
-            var values = 
+            var values =
             _quoteService.TGetAll();
             return Ok(values);
         }
@@ -38,30 +38,28 @@ namespace BookStore.WebApi.Controllers
         [HttpGet("ALLQuote")]
         public IActionResult QuoteAll(int id)
         {
-            var values = 
-            _quoteService.TGetById(id); 
-            return Ok(values);    
+            var values =
+            _quoteService.TGetById(id);
+            return Ok(values);
         }
 
         [HttpGet("RandomQuote")]
-        public IActionResult GetRandomQuote(RandomQuoteDto quoteDto)
+        public IActionResult GetRandomQuote()
         {
-                                                
-           var quote = _quoteService.TGetRandomQuote();
+            var quote = _quoteService.TGetRandomQuote();
             if (quote == null)
-            {
-                return NotFound("Bugün Alıntı yok :) ");
-            }
+                return NotFound("Bugün Alıntı yok :)");
+
             var dto = _mapper.Map<RandomQuoteDto>(quote);
-               
             return Ok(dto);
         }
+
 
         [HttpPut]
         public IActionResult PutQuote(Quote quote)
         {
             _quoteService.TUpdate(quote);
-            return Ok("Güncelleme başarılı");    
+            return Ok("Güncelleme başarılı");
 
 
         }
@@ -82,5 +80,5 @@ namespace BookStore.WebApi.Controllers
         }
 
     }    //Quote TGetRandomQuote();
-        //List<Quote> TGetAllQuotes();
-    }
+         //List<Quote> TGetAllQuotes();
+}
