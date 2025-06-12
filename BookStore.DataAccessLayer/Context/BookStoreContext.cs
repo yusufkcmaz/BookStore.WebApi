@@ -23,5 +23,6 @@ namespace BookStore.DataAccessLayer.Context
         public DbSet<Subscribe> Subscribes  { get; set; }
         public DbSet<Billboard> Billboards { get; set; }
 
+        public DbSet<Footer> Footers { get; set; }
     }
 }
