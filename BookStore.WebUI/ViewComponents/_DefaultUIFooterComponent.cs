@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BookStore.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.WebUI.ViewComponents
 {
@@ -6,6 +7,7 @@ namespace BookStore.WebUI.ViewComponents
     {
         public IViewComponentResult Invoke()
         {
+            
             return View();
         }
     }

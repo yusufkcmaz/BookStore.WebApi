@@ -1,4 +1,5 @@
-﻿
+﻿@using BookStore.EntityLayer.Concrete
+@model Footer
 @*
     _DefaultUIFooterComponent
 *@
@@ -12,7 +13,7 @@
 					<div class="company-brand">
 						<img src="~/booksaw/images/main-logo.png" alt="logo" class="footer-logo">
 						<p>
-							Bu Template backend hazırlanma ve geliştirme amaçlanmıştır
+							@Model.Description
 						</p>
 					</div>
 				</div>
