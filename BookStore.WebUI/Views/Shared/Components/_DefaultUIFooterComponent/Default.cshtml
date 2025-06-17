@@ -1,157 +1,149 @@
 ﻿@using BookStore.EntityLayer.Concrete
-@model Footer
+@model List<Footer>
 @*
     _DefaultUIFooterComponent
 *@
-<footer id="footer">
-	<div class="container">
-		<div class="row">
 
-			<div class="col-md-4">
+@foreach (var footer in Model)
 
-				<div class="footer-item">
-					<div class="company-brand">
-						<img src="~/booksaw/images/main-logo.png" alt="logo" class="footer-logo">
-						<p>
-							@Model.Description
-						</p>
-					</div>
-				</div>
+{
 
-			</div>
 
-			<div class="col-md-2">
 
-				<div class="footer-menu">
-					<h5>Hakkımızda</h5>
-					<ul class="menu-list">
-						<li class="menu-item">
-							<a href="/_DefaultUI/Index/">Yukarı çık</a>
-						</li>
-					
-						<li class="menu-item">
-							<a href="/_DefaultUI/Index#featured-books">Öne çıkanlar</a>
-						</li>
-						<li class="menu-item">
-							<a href="/_DefaultUI/Index#popular-books">Kategoriler</a>
-						</li>
-						<li class="menu-item">
-							<a href="/_DefaultUI/Index#special-offer">Abone ol</a>
-						</li>
-					</ul>
-				</div>
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
 
-			</div>
-			<div class="col-md-2">
+                <div class="col-md-4">
 
-				<div class="footer-menu">
-					<h5>Discover</h5>
-					<ul class="menu-list">
-						<li class="menu-item">
-							<a href="#">Home</a>
-						</li>
-						<li class="menu-item">
-							<a href="#">Books</a>
-						</li>
-						<li class="menu-item">
-							<a href="#">Authors</a>
-						</li>
-						<li class="menu-item">
-							<a href="#">Subjects</a>
-						</li>
-						<li class="menu-item">
-							<a href="#">Advanced Search</a>
-						</li>
-					</ul>
-				</div>
+                    <div class="footer-item">
+                        <div class="company-brand">
+                            <img src="~/booksaw/images/main-logo.png" alt="logo" class="footer-logo">
+                            <p>
+                                @footer.Description
+                            </p>
+                        </div>
+                    </div>
 
-			</div>
-			<div class="col-md-2">
+                </div>
+                <div class="col-md-2">
+                    <div class="footer-menu">
+                        <h5>Hakkımızda</h5>
+                        <div>@footer.Description1</div>
+                     
+                        <ul class="menu-list mt-2">
+                            <li class="menu-item">
+                                <a href="/_DefaultUI/Index/" style="font-weight: bold; color: black;">⬆️ Yukarı çık</a>
 
-				<div class="footer-menu">
-					<h5>Benim Hesabım</h5>
-					<ul class="menu-list">
-						<li class="menu-item">
-							<a href="#">Giriş yap</a>
-						</li>
-						<li class="menu-item">
-							<a href="#">View Cart</a>
-						</li>
-						<li class="menu-item">
-							<a href="#">My Wishtlist</a>
-						</li>
-						<li class="menu-item">
-							<a href="#">Track My Order</a>
-						</li>
-					</ul>
-				</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-			</div>
-			<div class="col-md-2">
 
-				<div class="footer-menu">
-					<h5>Help</h5>
-					<ul class="menu-list">
-						<li class="menu-item">
-							<a href="#">Help center</a>
-						</li>
-						<li class="menu-item">
-							<a href="#">Report a problem</a>
-						</li>
-						<li class="menu-item">
-							<a href="#">Suggesting edits</a>
-						</li>
-						<li class="menu-item">
-							<a href="#">Contact us</a>
-						</li>
-					</ul>
-				</div>
 
-			</div>
+                <div class="col-md-2">
 
-		</div>
-		<!-- / row -->
+                    <div class="footer-menu">
+                        <h5>İletişim</h5>
+                        <div class="contact-info" style="font-size: 13px;">
+                            <div>İletişim: @footer.PhoneNumber</div>
+                            <div>E-posta: @footer.Email</div>
+                            <div>Lokasyon : @footer.BooksawLocal</div>
+                        </div>
 
-	</div>
-</footer>
+                        
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+
+                    <div class="footer-menu">
+                        <h5>Sosyal Medya</h5>
+                        <ul class="menu-list">
+                            <li class="menu-item">
+                                <a href="@footer.FacebookUrl">Facebook</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="@footer.InstagramUrl">İnstagram</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="@footer.LinkedinUrl">LinkedIn</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="@footer.TwitterUrl">X</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="col-md-2">
+@* 
+                    <div class="footer-menu">
+                        <h5>Help</h5>
+                        <ul class="menu-list">
+                            <li class="menu-item">
+                                <a href="#">Help center</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">Report a problem</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">Suggesting edits</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#">Contact us</a>
+                            </li>
+                        </ul>
+                    </div> *@
+
+                </div>
+
+            </div>
+            <!-- / row -->
+
+        </div>
+    </footer>
+
+}
 
 <div id="footer-bottom">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 
-				<div class="copyright">
-					<div class="row">
+                <div class="copyright">
+                    <div class="row">
 
-						<div class="col-md-6">
-							<p>
-								© 2022 All rights reserved. Free HTML Template by <a href="https://www.templatesjungle.com/" target="_blank">TemplatesJungle</a>
-							</p>
-						</div>
+                        <div class="col-md-6">
+                            <p>
+                                © 2022 All rights reserved. Free HTML Template by <a href="https://www.templatesjungle.com/" target="_blank">TemplatesJungle</a>
+                            </p>
+                        </div>
 
-						<div class="col-md-6">
-							<div class="social-links align-right">
-								<ul>
-									<li>
-										<a href="#"><i class="icon icon-facebook"></i></a>
-									</li>
-									<li>
-										<a href="#"><i class="icon icon-twitter"></i></a>
-									</li>
-									<li>
-										<a href="#"><i class="icon icon-youtube-play"></i></a>
-									</li>
-									<li>
-										<a href="#"><i class="icon icon-behance-square"></i></a>
-									</li>
-								</ul>
-							</div>
-						</div>
+                        <div class="col-md-6">
+                            <div class="social-links align-right">
+                                <ul>
+                                    <li>
+                                        <a href="#"><i class="icon icon-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon icon-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon icon-youtube-play"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon icon-behance-square"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 
-					</div>
-				</div><!--grid-->
+                    </div>
+                </div><!--grid-->
 
-			</div><!--footer-bottom-content-->
-		</div>
-	</div>
+            </div><!--footer-bottom-content-->
+        </div>
+    </div>
 </div>

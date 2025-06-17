@@ -1,7 +1,23 @@
-
-
+using BookStore.BusinessLayer.Abstract;
+using BookStore.BusinessLayer.Concrete;
+using BookStore.DataAccessLayer.Abstract;
+using BookStore.DataAccessLayer.Context;
+using BookStore.DataAccessLayer.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// builder'ý buradan sonra kullanmaya baþlayabilirsin
+builder.Services.AddControllers();
+
+
+builder.Services.AddDbContext<BookStoreContext>();
+
+builder.Services.AddScoped<IFooterDal, EfFooterDal>();
+builder.Services.AddScoped<IFooterService, FooterManager>();
+
+
+
+//var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddHttpClient();
@@ -31,7 +47,7 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();
+
 
 app.MapControllerRoute(
     name: "areas",
@@ -44,3 +60,5 @@ app.MapAreaControllerRoute(
       areaName: "Admin",
       pattern: "Admin/{controller=Home}/{action=Index}/{id?}"
     );
+
+app.Run();

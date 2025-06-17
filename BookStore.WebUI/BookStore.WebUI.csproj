@@ -7,19 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\DattaAble-1.0.0\**" />
+    <Compile Remove="wwwroot\modernize-v1.0.1\**" />
+    <Content Remove="wwwroot\DattaAble-1.0.0\**" />
+    <Content Remove="wwwroot\modernize-v1.0.1\**" />
+    <EmbeddedResource Remove="wwwroot\DattaAble-1.0.0\**" />
+    <EmbeddedResource Remove="wwwroot\modernize-v1.0.1\**" />
+    <None Remove="wwwroot\DattaAble-1.0.0\**" />
+    <None Remove="wwwroot\modernize-v1.0.1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.18" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessLayer\BookStore.BusinessLayer.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
-    <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\" />
   </ItemGroup>
 
 </Project>

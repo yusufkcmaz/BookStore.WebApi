@@ -32,6 +32,9 @@ builder.Services.AddScoped<IQuoteService, QuoteManager>();
 builder.Services.AddScoped<ISubscribeDal, EfSubscribeDal>();
 builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
 
+builder.Services.AddScoped<IFooterDal , EfFooterDal>();
+builder.Services.AddScoped<IFooterService , FooterManager>();
+
 var testService = builder.Services.BuildServiceProvider().GetService<ISubscribeService>();
 Console.WriteLine(testService == null ? "Baðýmlýlýk yüklenemedi!" : "Baðýmlýlýk baþarýyla yüklendi!");
 
