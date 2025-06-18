@@ -45,7 +45,7 @@ namespace BookStore.WebUI.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "_DefaultUI");
             }
             ModelState.AddModelError("", "Geçersiz Email veya Şifre");
             return View(loginDto);
