@@ -1,4 +1,6 @@
 ﻿using BookStore.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.DataAccessLayer.Context
 {
-    public class BookStoreContext :DbContext
+    public class BookStoreContext : IdentityDbContext<AppUser, IdentityRole<int>, int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -24,5 +26,6 @@ namespace BookStore.DataAccessLayer.Context
         public DbSet<Billboard> Billboards { get; set; }
 
         public DbSet<Footer> Footers { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
     }
 }
