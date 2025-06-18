@@ -3,9 +3,21 @@ using BookStore.BusinessLayer.Concrete;
 using BookStore.DataAccessLayer.Abstract;
 using BookStore.DataAccessLayer.Context;
 using BookStore.DataAccessLayer.EntityFramework;
+using BookStore.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<BookStoreContext>();
 
+builder.Services.AddIdentity<AppUser, IdentityRole<int>>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+})
+.AddEntityFrameworkStores<BookStoreContext>()
+.AddDefaultTokenProviders();
 // builder'ý buradan sonra kullanmaya baþlayabilirsin
 builder.Services.AddControllers();
 
@@ -42,7 +54,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.UseAuthentication();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

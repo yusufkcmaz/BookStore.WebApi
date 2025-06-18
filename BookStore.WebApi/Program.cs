@@ -3,6 +3,8 @@ using BookStore.BusinessLayer.Concrete;
 using BookStore.DataAccessLayer.Abstract;
 using BookStore.DataAccessLayer.Context;
 using BookStore.DataAccessLayer.EntityFramework;
+using BookStore.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 //Baðýmlýlýklarý yönetmek 
 builder.Services.AddDbContext<BookStoreContext>();
+
+builder.Services.AddIdentity<AppUser, IdentityRole<int>>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+})
+.AddEntityFrameworkStores<BookStoreContext>()
+.AddDefaultTokenProviders();
+
 
 builder.Services.AddScoped<ICategoryDal , EfCategoryDal>();
 builder.Services.AddScoped<ICategoryService , CategoryManager>();
@@ -34,6 +47,9 @@ builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
 
 builder.Services.AddScoped<IFooterDal , EfFooterDal>();
 builder.Services.AddScoped<IFooterService , FooterManager>();
+
+builder.Services.AddScoped<IUserDal , EfUserDal>();
+builder.Services.AddScoped<IUserService , UserManager>();
 
 var testService = builder.Services.BuildServiceProvider().GetService<ISubscribeService>();
 Console.WriteLine(testService == null ? "Baðýmlýlýk yüklenemedi!" : "Baðýmlýlýk baþarýyla yüklendi!");
@@ -74,7 +90,7 @@ app.UseCors("AllowAll");
 
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
