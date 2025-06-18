@@ -51,6 +51,9 @@ builder.Services.AddScoped<IFooterService , FooterManager>();
 builder.Services.AddScoped<IUserDal , EfUserDal>();
 builder.Services.AddScoped<IUserService , UserManager>();
 
+builder.Services.AddScoped<IEmailSender, EmailManager>();
+
+
 var testService = builder.Services.BuildServiceProvider().GetService<ISubscribeService>();
 Console.WriteLine(testService == null ? "Baðýmlýlýk yüklenemedi!" : "Baðýmlýlýk baþarýyla yüklendi!");
 

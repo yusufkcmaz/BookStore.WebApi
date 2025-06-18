@@ -1,0 +1,13 @@
+﻿
+@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Hata";
+}
+
+<div class="container mt-5" style="max-width: 500px;">
+    <h3 class="text-center mb-4 text-danger">Bir hata oluştu!</h3>
+    <p>İşlem başarısız oldu. Lütfen tekrar deneyiniz.</p>
+    <a href="@Url.Action("Register", "Register")" class="btn btn-secondary">Kayıt Ol</a>
+</div>

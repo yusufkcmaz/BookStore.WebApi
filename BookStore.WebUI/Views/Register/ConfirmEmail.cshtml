@@ -1,0 +1,13 @@
+﻿
+@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Email Onayı Başarılı";
+}
+
+<div class="container mt-5" style="max-width: 500px;">
+    <h3 class="text-center mb-4 text-success">Email adresiniz başarıyla onaylandı!</h3>
+    <p>Artık giriş yapabilirsiniz.</p>
+    <a href="@Url.Action("Index", "Login")" class="btn btn-primary">Giriş Yap</a>
+</div>

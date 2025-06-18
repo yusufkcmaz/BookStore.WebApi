@@ -27,6 +27,9 @@ builder.Services.AddDbContext<BookStoreContext>();
 builder.Services.AddScoped<IFooterDal, EfFooterDal>();
 builder.Services.AddScoped<IFooterService, FooterManager>();
 
+builder.Services.AddScoped<IEmailSender, EmailManager>();
+
+builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
 
 
 //var builder = WebApplication.CreateBuilder(args);

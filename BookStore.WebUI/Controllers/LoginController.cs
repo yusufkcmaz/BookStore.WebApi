@@ -18,7 +18,7 @@ namespace BookStore.WebUI.Controllers
 
         }
 
-
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             await _signInManager.SignOutAsync();
@@ -40,8 +40,15 @@ namespace BookStore.WebUI.Controllers
                 return View(loginDto);
             }
 
-            var result = await _signInManager.PasswordSignInAsync(user, loginDto.Password, isPersistent: false, lockoutOnFailure: false);
+            if (!user.EmailConfirmed)
+            {
+                ModelState.AddModelError("", "Email adresiniz onaylanmamış.");
+                return View(loginDto);
+            }
 
+
+            var result = await _signInManager.PasswordSignInAsync(user, loginDto.Password, isPersistent: false, lockoutOnFailure: false);
+            // lockoutOnFailure ard arda başarıs girişlerde kitler : true durumda .
 
             if (result.Succeeded)
             {
