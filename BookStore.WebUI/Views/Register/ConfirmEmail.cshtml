@@ -1,13 +1,26 @@
-﻿
-@{
-    Layout = null;
-}
-@{
-    ViewData["Title"] = "Email Onayı Başarılı";
+﻿@{
+    Layout = "~/Views/Shared/_BookLayout.cshtml"; // Tema dosyanı burada çağırıyorsun, sayfa bu Layout'un içine gömülüyor
+    ViewData["Title"] = "Email Onayı Başarılı"; // Sayfa başlığı (tarayıcı sekmesinde görünür)
 }
 
-<div class="container mt-5" style="max-width: 500px;">
-    <h3 class="text-center mb-4 text-success">Email adresiniz başarıyla onaylandı!</h3>
-    <p>Artık giriş yapabilirsiniz.</p>
-    <a href="@Url.Action("Index", "Login")" class="btn btn-primary">Giriş Yap</a>
+<!-- Sayfanın ortasına şık bir kart koyuyoruz -->
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow p-4" style="max-width: 500px; width: 100%; border-radius: 16px;">
+
+        <!-- Başlık kısmı -->
+        <h3 class="text-center mb-3 text-success">
+            <i class="bi bi-check-circle-fill"></i> <!-- Bootstrap ikonu (istersen CDN ile ekleyebilirsin) -->
+            Email adresiniz başarıyla onaylandı!
+        </h3>
+
+        <!-- Açıklama paragrafı -->
+        <p class="text-center text-muted">
+            Artık hesabınıza giriş yapabilirsiniz.
+        </p>
+
+        <!-- Giriş yap butonu -->
+        <div class="text-center">
+            <a href="@Url.Action("Index", "Login")" class="btn btn-primary px-4 mt-3">Giriş Yap</a>
+        </div>
+    </div>
 </div>

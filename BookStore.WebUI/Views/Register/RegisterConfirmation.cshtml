@@ -1,15 +1,26 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    Layout = "~/Views/Shared/_BookLayout.cshtml"; // Tema layout’unu kullanıyoruz
+    ViewData["Title"] = "Kayıt Onayı Gönderildi"; // Sekme başlığı
 }
 
-@{
-    ViewData["Title"] = "Kayıt Onayı Gönderildi";
-}
+<!-- Sayfa içeriği ortalanıyor -->
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow p-4 text-center" style="max-width: 500px; width: 100%; border-radius: 16px;">
 
-<div class="container mt-5" style="max-width: 500px;">
-    <h3 class="text-center mb-4">Kayıt Başarılı!</h3>
-    <p>
-        Kayıt işleminiz başarılı. Lütfen email adresinize gönderilen onay linkine tıklayarak hesabınızı aktif hale getirin.
-    </p>
+        <!-- Başlık + ikon -->
+        <h3 class="text-success mb-3">
+            <i class="bi bi-envelope-check-fill" style="font-size: 2rem;"></i><br />
+            Kayıt Başarılı!
+        </h3>
+
+        <!-- Açıklama -->
+        <p class="text-muted">
+            Lütfen email adresinize gönderilen <strong>onay linkine</strong> tıklayarak hesabınızı aktif hale getirin.
+        </p>
+
+        <!-- Giriş yap butonu -->
+        <a href="@Url.Action("Index", "Login")" class="btn btn-primary mt-3 px-4">
+            Giriş Yap
+        </a>
+    </div>
 </div>
