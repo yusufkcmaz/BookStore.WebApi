@@ -55,12 +55,16 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
-app.UseAuthorization();
 app.UseAuthentication();
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseAuthorization();
+
+
+
+app.MapAreaControllerRoute(
+    name: "admin",
+      areaName: "Admin",
+      pattern: "Admin/{controller=Home}/{action=Index}/{id?}"
+    );
 
 
 
@@ -70,10 +74,12 @@ app.MapControllerRoute(
 );
 
 
-app.MapAreaControllerRoute(
-    name:"admin",
-      areaName: "Admin",
-      pattern: "Admin/{controller=Home}/{action=Index}/{id?}"
-    );
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+
+
 
 app.Run();

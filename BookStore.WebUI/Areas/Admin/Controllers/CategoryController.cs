@@ -1,12 +1,17 @@
 ﻿using BookStore.WebUI.Dtos.CategoryDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.IO;
 using System.Text;
 using static System.Net.WebRequestMethods;
 //----<Swagger, API'yi test etmek için kullanabileceğimiz bir arayüzdür.---->//
-namespace BookStore.WebUI.Controllers
+namespace BookStore.WebUI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+
+
+    //[Authorize(Roles = "Admin")]
     //Consuming işlemi, dış bir API'den veri almak anlamına gelir.(Tüketmek)
     public class CategoryController : Controller
     {
@@ -112,7 +117,7 @@ namespace BookStore.WebUI.Controllers
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto categoryDto)
         {
 
-            var client = _httpClientFactory.CreateClient(); 
+            var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(categoryDto);
             StringContent content = new(jsonData, Encoding.UTF8, "application/json");
             var response = await client.PutAsync("https://localhost:7293/api/Categories", content);

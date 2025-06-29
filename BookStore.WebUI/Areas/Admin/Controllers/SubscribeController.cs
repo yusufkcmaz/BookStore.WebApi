@@ -6,9 +6,10 @@ using System.Net.Mail;
 using System.Net;
 using System.Runtime.CompilerServices;
 
-namespace BookStore.WebUI.Controllers
+namespace BookStore.WebUI.Areas.Admin.Controllers
 {
-    
+    [Area("Admin")]
+
     public class SubscribeController : Controller
     {
         //private readonly ISubscribeService _subscribeService;
@@ -16,7 +17,7 @@ namespace BookStore.WebUI.Controllers
 
         public SubscribeController(/*ISubscribeService subscribeService,*/ IHttpClientFactory httpClientFactory)
         {
-           //_subscribeService = subscribeService;
+            //_subscribeService = subscribeService;
             _httpClientFactory = httpClientFactory;
         }
 

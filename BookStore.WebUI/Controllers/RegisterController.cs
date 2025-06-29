@@ -46,6 +46,7 @@ namespace BookStore.WebUI.Controllers
             var result = await _userManager.CreateAsync(user , registerDto.Password);
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(user, "User");
                 //Email onay token
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 var confirmationLink = Url.Action(nameof(ConfirmEmail), "Register",

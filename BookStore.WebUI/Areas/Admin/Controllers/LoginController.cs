@@ -4,8 +4,10 @@ using BookStore.WebUI.Dtos.UserDtos;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookStore.WebUI.Controllers
+namespace BookStore.WebUI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+
     public class LoginController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
@@ -52,8 +54,17 @@ namespace BookStore.WebUI.Controllers
 
             if (result.Succeeded)
             {
+                var roles = await _userManager.GetRolesAsync(user);
+
+                if (roles.Contains("Admin"))
+                    return RedirectToAction("Index", "AdminDashboard", new { area = "Admin" });
+
+                if (roles.Contains("User"))
+                    return RedirectToAction("Index", "MyProfile", new { area = "User" });
+
                 return RedirectToAction("Index", "_DefaultUI");
             }
+
             ModelState.AddModelError("", "Geçersiz Email veya Şifre");
             return View(loginDto);
 

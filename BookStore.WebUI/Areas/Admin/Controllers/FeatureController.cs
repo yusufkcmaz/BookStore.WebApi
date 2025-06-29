@@ -4,8 +4,9 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Text;
 
-namespace BookStore.WebUI.Controllers
+namespace BookStore.WebUI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class FeatureController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -69,7 +70,7 @@ namespace BookStore.WebUI.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var data = await responseMessage.Content.ReadAsStringAsync();
-                var values= JsonConvert.DeserializeObject<GetByIdFeatureDto>(data);
+                var values = JsonConvert.DeserializeObject<GetByIdFeatureDto>(data);
                 return View(values);
 
             }
@@ -81,9 +82,9 @@ namespace BookStore.WebUI.Controllers
 
         public async Task<IActionResult> UpdateFeature(UpdateFeatueDto featueDto)
         {
-            var client =_httpClientFactory .CreateClient();
+            var client = _httpClientFactory.CreateClient();
             var data = JsonConvert.SerializeObject(featueDto);
-            StringContent content = new StringContent(data,Encoding.UTF8,"application/json");
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
             var responsemessage = await client.PutAsync("https://localhost:7293/api/Features", content);
             if (responsemessage.IsSuccessStatusCode)
             {
@@ -92,9 +93,9 @@ namespace BookStore.WebUI.Controllers
             }
             return View();
         }
-       public async Task<IActionResult> LastFourFeatures()
+        public async Task<IActionResult> LastFourFeatures()
         {
-            var client =_httpClientFactory.CreateClient();
+            var client = _httpClientFactory.CreateClient();
             var responsemessage = await client.GetAsync("https://localhost:7293/api/Features/GetLastFourFeature");
             if (responsemessage.IsSuccessStatusCode)
             {
