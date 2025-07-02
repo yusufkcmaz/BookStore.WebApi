@@ -60,7 +60,7 @@ namespace BookStore.WebUI.Areas.Admin.Controllers
                     return RedirectToAction("Index", "AdminDashboard", new { area = "Admin" });
 
                 if (roles.Contains("User"))
-                    return RedirectToAction("Index", "MyProfile", new { area = "User" });
+                    return RedirectToAction("Index", "_DefaultUI", new { area = "" });
 
                 return RedirectToAction("Index", "_DefaultUI", new { area = "" });
             }

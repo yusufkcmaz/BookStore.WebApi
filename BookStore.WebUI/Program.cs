@@ -39,6 +39,9 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -76,6 +79,24 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
+
+//Otamatik user ve Admin ekleme ve izleme
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<AppRole>>();
+
+    if (!await roleManager.RoleExistsAsync("User"))
+    {
+        await roleManager.CreateAsync(new AppRole { Name = "User" });
+    }
+
+    if (!await roleManager.RoleExistsAsync("Admin"))
+    {
+        await roleManager.CreateAsync(new AppRole { Name = "Admin" });
+    }
+}
 
 
 

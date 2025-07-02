@@ -46,6 +46,10 @@ namespace BookStore.WebUI.Controllers
             var result = await _userManager.CreateAsync(user, registerDto.Şifre);
             if (result.Succeeded)
             {
+                //Kayıt olan kullanıcı direkt USER atama.
+                await _userManager.AddToRoleAsync(user, "User");
+
+
                 //Email onay token
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
