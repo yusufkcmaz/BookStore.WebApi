@@ -1,0 +1,30 @@
+﻿@using BookStore.WebUI.Dtos.RoleDtos
+@model CreateRoleDto
+@{
+    ViewData["Title"] = "CreateRole";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<div class="card shadow-sm mx-auto" style="max-width: 400px;">
+    <div class="card-header bg-dark text-white">
+        <h4 class="mb-0">Yeni Rol Ekle</h4>
+    </div>
+    <div class="card-body">
+
+        <form asp-area="Admin" asp-controller="Rol" asp-action="CreateRole" method="post" novalidate>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Rol Adı</label>
+                <input asp-for="Name" class="form-control" />
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.Name)</span>
+            </div>
+
+            <button type="submit" class="btn btn-outline-dark w-100">
+                <i class="fa fa-save"></i> Kaydet
+            </button>
+
+        </form>
+
+    </div>
+</div>
+

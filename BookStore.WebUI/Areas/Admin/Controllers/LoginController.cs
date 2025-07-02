@@ -62,7 +62,7 @@ namespace BookStore.WebUI.Areas.Admin.Controllers
                 if (roles.Contains("User"))
                     return RedirectToAction("Index", "MyProfile", new { area = "User" });
 
-                return RedirectToAction("Index", "_DefaultUI");
+                return RedirectToAction("Index", "_DefaultUI", new { area = "" });
             }
 
             ModelState.AddModelError("", "Geçersiz Email veya Şifre");

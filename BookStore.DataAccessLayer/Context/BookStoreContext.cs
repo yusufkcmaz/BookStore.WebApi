@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BookStore.DataAccessLayer.Context
 {
-    public class BookStoreContext : IdentityDbContext<AppUser, IdentityRole<int>, int>
+    public class BookStoreContext : IdentityDbContext<AppUser, AppRole, int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

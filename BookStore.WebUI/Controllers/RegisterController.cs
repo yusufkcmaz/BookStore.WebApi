@@ -14,7 +14,7 @@ namespace BookStore.WebUI.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
         private readonly IEmailSender _emailSender;
-        public RegisterController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager,IEmailSender emailSender)
+        public RegisterController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IEmailSender emailSender)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -36,24 +36,31 @@ namespace BookStore.WebUI.Controllers
 
             var user = new AppUser
             {
-                FirstName = registerDto.FirstName,
-                LastName = registerDto.LastName,
+                FirstName = registerDto.Adınız,
+                LastName = registerDto.Soyadınız,
                 Email = registerDto.Email,
-                UserName = registerDto.UserName,
+                UserName = registerDto.KullanıcıAdı,
 
             };
 
-            var result = await _userManager.CreateAsync(user , registerDto.Password);
+            var result = await _userManager.CreateAsync(user, registerDto.Şifre);
             if (result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(user, "User");
                 //Email onay token
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+
+
                 var confirmationLink = Url.Action(nameof(ConfirmEmail), "Register",
-                    new { userID = user.Id, token = token }, Request.Scheme);
+
+                    new { userId = user.Id, token = token }, Request.Scheme);
+
                 //Console.WriteLine($"Email doğrulama Linki : {confirmationLink}");
+
                 string mailBody = $"Email doğrulama linkiniz: <a href='{confirmationLink}'>Buraya tıklayın</a>";
+
                 await _emailSender.SendEmailAsync(user.Email, "Email Onay", mailBody);
+
                 return View("RegisterConfirmation");
 
             }

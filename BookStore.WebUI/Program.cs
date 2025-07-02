@@ -9,16 +9,13 @@ using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<BookStoreContext>();
 
-builder.Services.AddIdentity<AppUser, IdentityRole<int>>(options =>
+builder.Services.AddIdentity<AppUser, AppRole>(cfg =>
 {
-    options.Password.RequireDigit = false;
-    options.Password.RequireLowercase = false;
-    options.Password.RequireNonAlphanumeric = false;
-    options.Password.RequireUppercase = false;
+    cfg.User.RequireUniqueEmail = true;
+
 })
-.AddEntityFrameworkStores<BookStoreContext>()
-.AddDefaultTokenProviders();
-// builder'ý buradan sonra kullanmaya baþlayabilirsin
+    .AddEntityFrameworkStores<BookStoreContext>()
+  .AddDefaultTokenProviders();
 builder.Services.AddControllers();
 
 
