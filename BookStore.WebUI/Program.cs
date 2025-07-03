@@ -26,6 +26,22 @@ builder.Services.AddScoped<IFooterService, FooterManager>();
 
 builder.Services.AddScoped<IEmailSender, EmailManager>();
 
+
+builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
+
+builder.Services.AddScoped<IProductDal, EfProductDal>();
+builder.Services.AddScoped<IProductService, ProductManager>();
+
+
+builder.Services.AddScoped<ISubscribeDal, EfSubscribeDal>();
+builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
+
+builder.Services.AddScoped<IQuoteDal, EfQuoteDal>();
+builder.Services.AddScoped<IQuoteService, QuoteManager>();
+
+
+
 builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
 
 
