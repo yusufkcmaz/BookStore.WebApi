@@ -41,6 +41,10 @@ builder.Services.AddScoped<IQuoteDal, EfQuoteDal>();
 builder.Services.AddScoped<IQuoteService, QuoteManager>();
 
 
+builder.Services.AddScoped<IUserDal, EfUserDal>();
+builder.Services.AddScoped<IUserService, UserManager>();
+
+
 
 builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
 

@@ -30,16 +30,26 @@ namespace BookStore.WebUI.Areas.Admin.Controllers
         {
 
             ViewBag.CategoryCount = _categoryDal.GetAll().Count(); // kategori
-            ViewBag.Product = _productDal.GetAll().Count(); // Ürün
+            ViewBag.Products = _productDal.GetAll().Count(); // Ürün
             ViewBag.subcribe = _subscribeDal.GetAll().Count(); //Aboneler
 
             var totalPosts = _quoteDal.GetAll().Count();
             ViewBag.quote = totalPosts;
 
-            ViewBag.user = _userDal.GetAll().Count();
+            var expensiveProduct = _productDal.GetAll()
+                .OrderByDescending(p => p.ProductPrice)
+                .FirstOrDefault();
+
+            ViewBag.Product = expensiveProduct;
 
 
-            return View();
+
+
+            ViewBag.user = _userDal.GetAll();
+            var user = _userDal.GetAll();
+            return View(user);
+
+           
         }
     }
 }
