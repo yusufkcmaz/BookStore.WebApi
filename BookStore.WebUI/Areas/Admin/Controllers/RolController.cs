@@ -1,6 +1,7 @@
 ﻿using BookStore.EntityLayer.Concrete;
 using BookStore.WebUI.Dtos.RoleDtos;
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
@@ -9,6 +10,7 @@ using System.Runtime.CompilerServices;
 namespace BookStore.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class RolController : Controller
     {
 

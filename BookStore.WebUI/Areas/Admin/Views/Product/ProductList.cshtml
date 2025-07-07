@@ -1,49 +1,88 @@
 ﻿@model List<BookStore.WebUI.Dtos.ProductsDtos.ResultProductDto>
+
 @{
+    ViewData["Title"] = "Ürünler";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<div class="page-inner">
+    <div class="page-header mb-4">
+        <h4 class="page-title"><i class="fas fa-boxes text-primary"></i> Ürünler</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="/Admin/Dashboard">
+                    <i class="fas fa-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="fas fa-chevron-right"></i>
+            </li>
+            <li class="nav-item">
+                Ürünler
+            </li>
+        </ul>
+    </div>
 
-<div class="container">
-    <br />
-    <table class="table table-bordered">
-        <tr>
-            <th>#</th>
-            <th>Ürün Adı</th>
-            <th>Ürün Açıklması</th>
-            <th>Ürün Görseli</th>
-            <th>Ürün Yazar</th>
-            <th>Ürün stok</th>
-            <th>Ürün fiyat</th>
-           
-
-            <th>Sil</th>
-            <th>Güncelle</th>
-
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.ProductId</td>
-                <td>@item.ProductName</td>
-                <td>@item.ProductDescription</td>
-                <td>
-                    <img src="@item.ProductImageUrl" alt="@item.ProductName" style="width: 95px; max-height: 100px;" />
-                </td>
-                <td>@item.ProductWriterName</td>
-                <td>@item.ProductStock</td>
-                <td>@item.ProductPrice</td>
-                <td><a href="/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Product/UpdateProduct/@item.ProductId" class="btn btn-success">Güncelle</a></td>
-
-            </tr>
-        }
-
-    </table>
-    <a href="/Product/CreateProduct/" class="btn btn-primary">Yeni ürün Girişi</a>
-    <br />
-
-
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="fas fa-clipboard-list"></i> Ürün Listesi</h5>
+                    <a href="/Product/CreateProduct/" class="btn btn-light btn-sm">
+                        <i class="fas fa-plus"></i> Yeni Ürün
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Açıklama</th>
+                                    <th>Görsel</th>
+                                    <th>Yazar</th>
+                                    <th>Stok</th>
+                                    <th>Fiyat</th>
+                                    <th>Sil</th>
+                                    <th>Güncelle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ProductId</td>
+                                        <td>@item.ProductName</td>
+                                        <td>@item.ProductDescription</td>
+                                        <td>
+                                            <img src="@item.ProductImageUrl" alt="@item.ProductName" class="img-thumbnail" style="width: 90px; height: auto;" />
+                                        </td>
+                                        <td>@item.ProductWriterName</td>
+                                        <td>@item.ProductStock</td>
+                                        <td>@item.ProductPrice.ToString("C")</td>
+                                        <td>
+                                            <a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-success btn-sm">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer text-end">
+                    <a href="/Admin/Product/CreateProduct/" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Yeni Ürün
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-

@@ -1,62 +1,91 @@
 ﻿@model BookStore.WebUI.Dtos.ProductsDtos.CreateProductDto
+
 @{
+    ViewData["Title"] = "Yeni Ürün Ekle";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-
-<form asp-action="CreateProduct" asp-controller="Product" method="post">
-    <div class="container">
-
-        <br />
-        <label>Ürün adı</label>
-        <input type="text" asp-for="ProductName" class="form-control" />
-        <br />
-
-        <br />
-        <label>Ürün stok</label>
-        <input type="text" asp-for="ProductStock" class="form-control" />
-        <br />
-
-
-        <br />
-        <label>Ürün Kategori</label>
-        <input type="text" asp-for="CategoryId" class="form-control" />
-        <br />
-
-
-
-
-        <br />
-        <label>Ürün Fiyatı</label>
-        <input type="text" asp-for="ProductPrice" class="form-control" />
-        <br />
-
-        <br />
-        <label>Ürün Görsel</label>
-        <input type="text" asp-for="ProductImageUrl" class="form-control" />
-        <br />
-
-
-        <br />
-        <label>Ürün Açıklama</label>
-        <input type="text" asp-for="ProductDescription" class="form-control" />
-        <br />
-
-
-        <br />
-        <label>Ürün Yazar</label>
-        <input type="text" asp-for="ProductWriterName" class="form-control" />
-        <br />
-
-
-       
-
-
-        <button type="submit" class="btn btn-primary">EKLE</button>
-
-
-
+<div class="page-inner">
+    <div class="page-header mb-4">
+        <h4 class="page-title"><i class="fas fa-plus text-primary"></i> Yeni Ürün Ekle</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="/Admin/Dashboard">
+                    <i class="fas fa-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="fas fa-chevron-right"></i>
+            </li>
+            <li class="nav-item">
+                Yeni Ürün
+            </li>
+        </ul>
     </div>
-</form>
 
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-box-open"></i> Ürün Bilgileri</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="CreateProduct" asp-controller="Product" method="post">
+                        <div class="mb-3">
+                            <label asp-for="ProductName" class="form-label">Ürün Adı</label>
+                            <input asp-for="ProductName" class="form-control" placeholder="Ürün adı girin" />
+                            <span asp-validation-for="ProductName" class="text-danger small"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ProductStock" class="form-label">Stok</label>
+                                <input asp-for="ProductStock" class="form-control" placeholder="Stok adedi" />
+                                <span asp-validation-for="ProductStock" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="CategoryId" class="form-label">Kategori ID</label>
+                                <input asp-for="CategoryId" class="form-control" placeholder="Kategori ID" />
+                                <span asp-validation-for="CategoryId" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ProductPrice" class="form-label">Fiyat</label>
+                                <input asp-for="ProductPrice" class="form-control" placeholder="Fiyat" />
+                                <span asp-validation-for="ProductPrice" class="text-danger small"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ProductWriterName" class="form-label">Yazar</label>
+                                <input asp-for="ProductWriterName" class="form-control" placeholder="Yazar adı" />
+                                <span asp-validation-for="ProductWriterName" class="text-danger small"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ProductImageUrl" class="form-label">Ürün Görsel URL</label>
+                            <input asp-for="ProductImageUrl" class="form-control" placeholder="Görsel URL" />
+                            <span asp-validation-for="ProductImageUrl" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="ProductDescription" class="form-label">Açıklama</label>
+                            <textarea asp-for="ProductDescription" class="form-control" rows="3" placeholder="Ürün açıklaması"></textarea>
+                            <span asp-validation-for="ProductDescription" class="text-danger small"></span>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Kaydet
+                            </button>
+                            <a href="/Admin/Product/Index" class="btn btn-secondary ms-2">
+                                <i class="fas fa-arrow-left"></i> Geri Dön
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

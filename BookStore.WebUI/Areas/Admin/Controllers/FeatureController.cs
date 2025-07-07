@@ -1,4 +1,5 @@
 ﻿using BookStore.WebUI.Dtos.FeatureDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -7,6 +8,7 @@ using System.Text;
 namespace BookStore.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class FeatureController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

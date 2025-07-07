@@ -5,11 +5,12 @@ using Newtonsoft.Json;
 using System.Net.Mail;
 using System.Net;
 using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookStore.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
+    [Authorize(Roles = "Admin")]
     public class SubscribeController : Controller
     {
         //private readonly ISubscribeService _subscribeService;

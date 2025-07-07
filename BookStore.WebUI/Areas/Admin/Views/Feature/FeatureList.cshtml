@@ -21,14 +21,14 @@
             <th>Güncelle</th>
 
         </tr>
-     @*    @foreach (var item in Model)
+        @foreach (var item in Model)
         {
             <tr>
                 <td>@item.FeatureId</td>
-                <td>@item.WriterName</td>
-                <td>@item.ImageUrl</td>
-                <td>@item.BookName</td>
-                <td>@item.Description</td>
+                <td>@item.ProductWriterName</td>
+                <td>@item.ProductImageUrl</td>
+                <td>@item.ProductName</td>
+                <td>@item.ProductDescription</td>
                 <td><a href="/Feature/DeleteFeature/@item.FeatureId" class="btn btn-danger">Sil</a></td>
                 <td><a href="/Feature/UpdateFeature/@item.FeatureId" class="btn btn-success">Güncelle</a></td>
 
@@ -36,8 +36,8 @@
         }
 
     </table>
-    <a href="/Feature/AddFeature/" class="btn btn-primary">Yeni ürün Girişi</a>
+    <a href="/Admin/Feature/AddFeature/" class="btn btn-primary">Yeni ürün Girişi</a>
 
 </div>
 
- *@
+ 

@@ -1,5 +1,6 @@
 ﻿using BookStore.BusinessLayer.Abstract;
 using BookStore.WebUI.Dtos.ProductsDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -8,6 +9,7 @@ using System.Text;
 namespace BookStore.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
 
     public class ProductController : Controller
     {

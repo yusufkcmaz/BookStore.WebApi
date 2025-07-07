@@ -9,7 +9,7 @@ using static System.Net.WebRequestMethods;
 namespace BookStore.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
+    [Authorize(Roles = "Admin")]
 
     //[Authorize(Roles = "Admin")]
     //Consuming işlemi, dış bir API'den veri almak anlamına gelir.(Tüketmek)
