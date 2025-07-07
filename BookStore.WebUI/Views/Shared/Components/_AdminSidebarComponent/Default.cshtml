@@ -69,7 +69,7 @@ _AdminSidebarComponent
                             </li>
                             <li>
 
-                                <a asp-area="Admin" asp-controller="Profile" asp-action="Index">
+                                <a asp-area="Admin" asp-controller="AdminProfile" asp-action="Index">
                                     <span class="sub-item">Profil Güncelleme</span>
                                 </a>
 
@@ -85,9 +85,17 @@ _AdminSidebarComponent
                             </li>
                             <li>
                                 <a asp-area="Admin" asp-controller="Rol" asp-action="Index">
-                                    <span class="sub-item">Rol işlemleri</span>
+                                    <span class="sub-item">Rol düzenleme işlemleri</span>
                                 </a>
-                            </li> 
+                            </li>
+
+                            <li>
+                                <a asp-area="Admin" asp-controller="RolAssign" asp-action="Index">
+                                    <span class="sub-item">Rol Atama</span>
+                                </a>
+                            </li>
+
+
                             <li>
                                 <a asp-area="Admin" asp-action="Index" asp-controller="Subscribe" >
                                     <span class="sub-item">Abonelik işlemi</span>

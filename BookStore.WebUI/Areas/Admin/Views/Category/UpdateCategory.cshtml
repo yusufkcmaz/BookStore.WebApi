@@ -1,22 +1,53 @@
 ﻿@using BookStore.WebUI.Dtos.CategoryDtos
 @model UpdateCategoryDto
+
 @{
+    ViewData["Title"] = "Kategori Güncelle";
     Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-
-<form asp-action="UpdateCategory" method="post">
-    <div class="form-group">
-        <label asp-for="categoryID">Kategori</label>
-        <input asp-for="categoryID" class="form-control" readonly/>
+<div class="page-inner">
+    <div class="page-header mb-4">
+        <h4 class="page-title"><i class="fas fa-edit text-primary"></i> Kategori Güncelle</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="/Admin/Dashboard"><i class="fas fa-home"></i></a>
+            </li>
+            <li class="separator"><i class="fas fa-chevron-right"></i></li>
+            <li class="nav-item">Kategori Güncelle</li>
+        </ul>
     </div>
 
-    <div class="form-group">
-        <label asp-for="categoryName">Kategori Adı</label>
-        <input asp-for="categoryName" class="form-control" />
-        <span asp-validation-for="categoryName" class="text-danger"></span>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-edit"></i> Kategori Bilgileri</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-action="UpdateCategory" method="post">
+                        <div class="mb-3">
+                            <label asp-for="categoryID" class="form-label">Kategori ID</label>
+                            <input asp-for="categoryID" class="form-control" readonly />
+                        </div>
 
-        <button type="submit" class="btn btn-primary">Güncelle</button>
+                        <div class="mb-3">
+                            <label asp-for="categoryName" class="form-label">Kategori Adı</label>
+                            <input asp-for="categoryName" class="form-control" placeholder="Kategori adı girin" />
+                            <span asp-validation-for="categoryName" class="text-danger small"></span>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Güncelle
+                            </button>
+                            <a href="/Admin/Category/Index/" class="btn btn-secondary ms-2">
+                                <i class="fas fa-arrow-left"></i> Geri Dön
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
+</div>

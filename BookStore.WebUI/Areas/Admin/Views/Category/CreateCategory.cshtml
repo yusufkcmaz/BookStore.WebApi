@@ -1,19 +1,53 @@
 ﻿@model BookStore.WebUI.Dtos.CategoryDtos.CreateCategoryDto
+
 @{
-   Layout = "~/Views/AdminLayout/Layout.cshtml";
+    ViewData["Title"] = "Yeni Kategori Ekle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-
-<form method="post">
-    <div class="container">
-
-        <br />
-        <label>Kategori ekle</label>
-        <input type="text" asp-for="CategoryName" class="form-control" />
-        <br />
-        <button class="btn btn-primary">EKLE</button>
-
-
+<div class="page-inner">
+    <div class="page-header mb-4">
+        <h4 class="page-title"><i class="fas fa-plus text-primary"></i> Yeni Kategori Ekle</h4>
+        <ul class="breadcrumbs">
+            <li class="nav-home">
+                <a href="/Admin/Dashboard">
+                    <i class="fas fa-home"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="fas fa-chevron-right"></i>
+            </li>
+            <li class="nav-item">
+                Yeni Kategori
+            </li>
+        </ul>
     </div>
-</form>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="fas fa-folder-plus"></i> Kategori Bilgileri</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="CategoryName">Kategori Adı</label>
+                            <input asp-for="CategoryName" class="form-control" placeholder="Kategori adı girin" />
+                            <span asp-validation-for="CategoryName" class="text-danger small"></span>
+                        </div>
+
+                        <div class="text-end mt-3">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Kaydet
+                            </button>
+                            <a href="/Admin/Category/CategoryList" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Geri Dön
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
