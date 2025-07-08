@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BookStore.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
 
     public class LoginController : Controller
     {
@@ -62,7 +62,7 @@ namespace BookStore.WebUI.Areas.Admin.Controllers
                     return RedirectToAction("Index", "AdminDashboard", new { area = "Admin" });
 
                 if (roles.Contains("User"))
-                    return RedirectToAction("Index", "_DefaultUI", new { area = "" });
+                    return RedirectToAction("Index", "UserProfile", new { area = "User" });
 
                 return RedirectToAction("Index", "_DefaultUI", new { area = "" });
             }
@@ -76,7 +76,7 @@ namespace BookStore.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Login");
+            return RedirectToAction("Index", "_DefaultUI");
         }
     }
 }

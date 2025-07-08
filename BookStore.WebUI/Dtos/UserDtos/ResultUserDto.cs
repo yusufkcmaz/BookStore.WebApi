@@ -10,5 +10,8 @@
         public string ImageUrl { get; set; }
         public string Email { get; set; }
         public IList<string> Roles { get; set; }
+        public string? CurrentPassword { get; set; }
+        public string? NewPassword { get; set; }
     }
 }
+

@@ -1,0 +1,43 @@
+﻿@model BookStore.WebUI.Dtos.UserDtos.ResultUserDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_BookLayout.cshtml";
+}
+
+<h1>Kullanıcı paneli</h1>
+
+
+
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Profil Bilgilerim</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    <img src="@Model.ImageUrl" class="img-thumbnail rounded-circle mb-3" alt="@Model.UserName" style="width:150px; height:150px;" />
+                    <h5>@Model.UserName</h5>
+                    <p>@Model.Email</p>
+                </div>
+                <div class="col-md-9">
+                    <dl class="row">
+                        <dt class="col-sm-4">Ad</dt>
+                        <dd class="col-sm-8">@Model.FirstName</dd>
+
+                        <dt class="col-sm-4">Soyad</dt>
+                        <dd class="col-sm-8">@Model.LastName</dd>
+
+                        <dt class="col-sm-4">Kullanıcı Adı</dt>
+                        <dd class="col-sm-8">@Model.UserName</dd>
+
+                        <dt class="col-sm-4">Email</dt>
+                        <dd class="col-sm-8">@Model.Email</dd>
+                    </dl>
+                    <a href="@Url.Action("UpdateProfile", "UserProfile", new { area = "User" })" class="btn btn-warning mt-3">Profili Güncelle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
