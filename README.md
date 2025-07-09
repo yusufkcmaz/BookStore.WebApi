@@ -79,8 +79,16 @@ kullanım kolaylığı sunar.
 ✅ Rol düzenlenebilir , eklenebilir.
 
 
+Ekran Görüntüleri
+--
+MAİLKİT KULLANIMI
+-
+![Adım-1](https://github.com/user-attachments/assets/d13693c2-9c56-43f7-97f8-b40958cb804c)
+![Adım-2](https://github.com/user-attachments/assets/61fc7700-7e9b-4538-b267-2750aa02a82a)
 
-
+KULLANICI-USER PANELİ
+-
+![Adsız tasarım (4)](https://github.com/user-attachments/assets/b0062782-93e5-48a3-a992-f7e5a732acb2)
 
 
 
