@@ -1,4 +1,4 @@
-﻿@model BookStore.WebUI.Dtos.UserDtos.ResultUserDto
+﻿@model BookStore.WebUI.Dtos.UserDtos.UpdateProfilDto
 @{
     ViewData["Title"] = "UpdateProfile";
     Layout = "~/Views/Shared/_BookLayout.cshtml";
@@ -18,7 +18,8 @@
                 <div class="alert alert-success">@TempData["SuccessMessage"]</div>
             }
 
-            <form asp-action="UpdateProfile" method="post">
+            <form asp-area="User" asp-controller="UserProfile" asp-action="UpdateProfile" method="post">
+
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-3">
@@ -59,11 +60,7 @@
                             <input asp-for="NewPassword" type="password" class="form-control" />
                             <span asp-validation-for="NewPassword" class="text-danger"></span>
                         </div>
-                        <div class="mb-3">
-                            <label>Yeni Şifre Tekrar</label>
-                            <input asp-for="ConfirmNewPassword" type="password" class="form-control" />
-                            <span asp-validation-for="ConfirmNewPassword" class="text-danger"></span>
-                        </div>
+                      
                     </div>
                 </div>
 

@@ -5,24 +5,56 @@
 
 
 <nav id="navbar">
-	<div class="main-menu stellarnav">
-		<ul class="menu-list">
-			<li class="menu-item active"><a href="/_DefaultUI/Index/">Anasayfa</a></li>
-			<li class="menu-item has-sub">
-		
+    <div class="main-menu stellarnav">
+        <ul class="menu-list">
+            <li class="menu-item active">
+                <a href="/_DefaultUI/Index/">Anasayfa</a>
+            </li>
 
-			</li>
-			<li class="menu-item"><a href="#featured-books" class="nav-link">Öne Çıkanlar</a></li>
-			<li class="menu-item"><a href="/Register/Register" class="nav-link">Kayıt Ol</a></li>
-			<li class="menu-item"><a href="/Admin/Login/Index" class="nav-link">Giriş Yap</a></li>
-			<li class="menu-item"><a href="#latest-blog" class="nav-link">Hakkımızda</a></li>
-		</ul>
+            <li class="menu-item">
+                <a href="#featured-books" class="nav-link">Öne Çıkanlar</a>
+            </li>
 
-		<div class="hamburger">
-			<span class="bar"></span>
-			<span class="bar"></span>
-			<span class="bar"></span>
-		</div>
+            <li class="menu-item">
+                <a href="#latest-blog" class="nav-link">Hakkımızda</a>
+            </li>
 
-	</div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="menu-item">
+                    <a asp-area="User" asp-controller="UserProfile" asp-action="Index" class="nav-link">
+                        Profilim
+                    </a>
+                </li>
+
+                <li class="menu-item">
+                    <form asp-area="Admin" asp-controller="Login" asp-action="Logout" method="post" class="d-inline">
+                        <button type="submit" class="nav-link btn btn-link text-dark p-0">
+                            Çıkış Yap
+                        </button>
+                    </form>
+                </li>
+            }
+            else
+            {
+                <li class="menu-item">
+                    <a href="/Admin/Login/Index" class="nav-link">
+                        Giriş Yap
+                    </a>
+                </li>
+
+                <li class="menu-item">
+                    <a href="/Register/Index" class="nav-link">
+                        Kayıt Ol
+                    </a>
+                </li>
+            }
+        </ul>
+
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
 </nav>

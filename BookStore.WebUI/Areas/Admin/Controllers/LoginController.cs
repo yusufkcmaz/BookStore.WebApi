@@ -72,11 +72,12 @@ namespace BookStore.WebUI.Areas.Admin.Controllers
 
         }
 
-        [HttpPost]
+      
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "_DefaultUI");
+            return RedirectToAction("Index", "_DefaultUI", new { area = "" });
+
         }
     }
 }
